@@ -1,0 +1,17 @@
+query GetStoreList($groupCode: String!) {
+  group: GetStoreGroupByCode(param: {
+    groupCode: $groupCode
+  }) {
+    ok
+    error {
+      code
+      msg
+    }
+    data {
+      list {
+        name
+        code
+      }
+    }
+  }
+}
