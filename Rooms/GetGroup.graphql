@@ -1,4 +1,4 @@
-query GetStoreList($groupCode: String!) {
+query GetGroup($groupCode: String!) {
   group: GetStoreGroupByCode(param: {
     groupCode: $groupCode
   }) {

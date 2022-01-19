@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B9BCC0D2798665200163CB2 /* GetTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BCC0C2798665200163CB2 /* GetTimeZone.swift */; };
 		7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC1C332797EEF3003148AA /* AppDelegate.swift */; };
 		7BAC1C362797EEF3003148AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC1C352797EEF3003148AA /* SceneDelegate.swift */; };
 		7BAC1C382797EEF3003148AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC1C372797EEF3003148AA /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B9BCC0C2798665200163CB2 /* GetTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeZone.swift; sourceTree = "<group>"; };
 		7BAC1C302797EEF3003148AA /* Rooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAC1C332797EEF3003148AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BAC1C352797EEF3003148AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		7BAC1C542797EEF4003148AA /* RoomsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsUITests.swift; sourceTree = "<group>"; };
 		7BAC1C562797EEF4003148AA /* RoomsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7BD9215B2797FA9500919BA3 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		7BD9215C2798007700919BA3 /* GetStoreList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetStoreList.graphql; sourceTree = "<group>"; };
+		7BD9215C2798007700919BA3 /* GetGroup.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetGroup.graphql; sourceTree = "<group>"; };
 		7BD9215D279800BA00919BA3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7BD9215F2798012B00919BA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7BD921642798076F00919BA3 /* GetStoreCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStoreCode.swift; sourceTree = "<group>"; };
@@ -90,6 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B9BCC0A279860AA00163CB2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7BD9215D279800BA00919BA3 /* API.swift */,
+				7BD9215F2798012B00919BA3 /* Network.swift */,
+				7BD921642798076F00919BA3 /* GetStoreCode.swift */,
+				7B9BCC0C2798665200163CB2 /* GetTimeZone.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		7B9BCC0B279860D300163CB2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7BD9215B2797FA9500919BA3 /* schema.json */,
+				7BD9215C2798007700919BA3 /* GetGroup.graphql */,
+				7BAC1C392797EEF3003148AA /* Main.storyboard */,
+				7BAC1C3C2797EEF4003148AA /* Assets.xcassets */,
+				7BAC1C3E2797EEF4003148AA /* LaunchScreen.storyboard */,
+				7BAC1C412797EEF4003148AA /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		7BAC1C272797EEF3003148AA = {
 			isa = PBXGroup;
 			children = (
@@ -113,18 +139,11 @@
 		7BAC1C322797EEF3003148AA /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				7BD9215D279800BA00919BA3 /* API.swift */,
-				7BD9215F2798012B00919BA3 /* Network.swift */,
+				7B9BCC0A279860AA00163CB2 /* API */,
 				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
 				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
-				7BD921642798076F00919BA3 /* GetStoreCode.swift */,
 				7BAC1C372797EEF3003148AA /* ViewController.swift */,
-				7BD9215B2797FA9500919BA3 /* schema.json */,
-				7BD9215C2798007700919BA3 /* GetStoreList.graphql */,
-				7BAC1C392797EEF3003148AA /* Main.storyboard */,
-				7BAC1C3C2797EEF4003148AA /* Assets.xcassets */,
-				7BAC1C3E2797EEF4003148AA /* LaunchScreen.storyboard */,
-				7BAC1C412797EEF4003148AA /* Info.plist */,
+				7B9BCC0B279860D300163CB2 /* Resources */,
 			);
 			path = Rooms;
 			sourceTree = "<group>";
@@ -312,6 +331,7 @@
 				7BAC1C382797EEF3003148AA /* ViewController.swift in Sources */,
 				7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */,
 				7BD9215E279800BA00919BA3 /* API.swift in Sources */,
+				7B9BCC0D2798665200163CB2 /* GetTimeZone.swift in Sources */,
 				7BAC1C362797EEF3003148AA /* SceneDelegate.swift in Sources */,
 				7BD921652798076F00919BA3 /* GetStoreCode.swift in Sources */,
 			);
