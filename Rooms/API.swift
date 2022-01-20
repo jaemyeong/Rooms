@@ -23,6 +23,10 @@ public final class GetGroupQuery: GraphQLQuery {
             __typename
             name
             code
+            zoneinfo {
+              __typename
+              tz
+            }
           }
         }
       }
@@ -222,6 +226,7 @@ public final class GetGroupQuery: GraphQLQuery {
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("code", type: .nonNull(.scalar(String.self))),
+              GraphQLField("zoneinfo", type: .nonNull(.object(Zoneinfo.selections))),
             ]
           }
 
@@ -231,8 +236,8 @@ public final class GetGroupQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String, code: String) {
-            self.init(unsafeResultMap: ["__typename": "Store", "name": name, "code": code])
+          public init(name: String, code: String, zoneinfo: Zoneinfo) {
+            self.init(unsafeResultMap: ["__typename": "Store", "name": name, "code": code, "zoneinfo": zoneinfo.resultMap])
           }
 
           public var __typename: String {
@@ -259,6 +264,54 @@ public final class GetGroupQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "code")
+            }
+          }
+
+          public var zoneinfo: Zoneinfo {
+            get {
+              return Zoneinfo(unsafeResultMap: resultMap["zoneinfo"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "zoneinfo")
+            }
+          }
+
+          public struct Zoneinfo: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Zoneinfo"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("tz", type: .nonNull(.scalar(String.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(tz: String) {
+              self.init(unsafeResultMap: ["__typename": "Zoneinfo", "tz": tz])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var tz: String {
+              get {
+                return resultMap["tz"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "tz")
+              }
             }
           }
         }

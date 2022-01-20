@@ -2,15 +2,21 @@ import Foundation
 
 import ErrorKit
 
-public struct GetStoreCode {
+public struct GetStoreList {
     private let groupCode: String
     
     public init(groupCode: String) {
         self.groupCode = groupCode
     }
     
-    public func execute() async throws -> String {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
+    public func callAsFunction() async throws -> [Store] {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[Store], Error>) in
+            if Task.isCancelled {
+                continuation.resume(throwing: CancellationError())
+                
+                return
+            }
+            
             let action = Network.shared.apollo.fetch(query: GetGroupQuery(groupCode: self.groupCode)) { result in
                 if Task.isCancelled {
                     continuation.resume(throwing: CancellationError())
@@ -26,12 +32,23 @@ public struct GetStoreCode {
                         return
                     }
                     
-                    guard let code = value.data?.group.data?.list?.first?.code else {
-                        continuation.resume(throwing: NilError())
+                    let items: [Store]
+                    
+                    do {
+                        guard let unwrappedItems = try value.data?.group.data?.list?.map(Store.init(data:)) else {
+                            continuation.resume(throwing: NilError())
+                            
+                            return
+                        }
+                        
+                        items = unwrappedItems
+                    } catch {
+                        continuation.resume(throwing: error)
                         
                         return
                     }
-                    continuation.resume(returning: code)
+                    
+                    continuation.resume(returning: items)
                 case .failure(let error):
                     continuation.resume(throwing: error)
                 }

@@ -7,29 +7,19 @@ public final class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         Task.detached {
-            let storeCode: String
+            let action = GetStoreList(groupCode: "FVFWKW")
+            
+            let storeList: [Store]
             
             do {
-                storeCode = try await GetStoreCode(groupCode: "FVFWKW").execute()
+                storeList = try await action()
             } catch {
                 os_log(.error, "%@", String(describing: error))
                 
                 return
             }
             
-            os_log(.info, "%@", storeCode)
-            
-            let timeZone: TimeZone
-            
-            do {
-                timeZone = try await GetTimeZone().execute()
-            } catch {
-                os_log(.error, "%@", String(describing: error))
-                
-                return
-            }
-            
-            os_log(.info, "%@", String(describing: timeZone))
+            os_log(.info, "%@", String(describing: storeList))
         }
     }
 }

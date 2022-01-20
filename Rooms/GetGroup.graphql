@@ -11,6 +11,9 @@ query GetGroup($groupCode: String!) {
       list {
         name
         code
+        zoneinfo {
+          tz
+        }
       }
     }
   }
