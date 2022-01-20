@@ -117,12 +117,20 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		7BA19E352798F70D00C72427 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		7BAC1C272797EEF3003148AA = {
 			isa = PBXGroup;
 			children = (
 				7BAC1C322797EEF3003148AA /* Rooms */,
 				7BAC1C492797EEF4003148AA /* RoomsTests */,
 				7BAC1C532797EEF4003148AA /* RoomsUITests */,
+				7BA19E352798F70D00C72427 /* Packages */,
 				7BAC1C312797EEF3003148AA /* Products */,
 			);
 			sourceTree = "<group>";
