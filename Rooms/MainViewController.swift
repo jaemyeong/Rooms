@@ -7,7 +7,7 @@ public final class MainViewController: UIViewController {
         self.view as! MainView
     }
     
-    private var dataSource: UITableViewDiffableDataSource<Int, Store>?
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Store>?
     
     public override func loadView() {
         self.view = MainView()
@@ -21,13 +21,20 @@ public final class MainViewController: UIViewController {
             UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: nil, action: nil)
         ]
         
-        self.dataSource = UITableViewDiffableDataSource(tableView: self.contentView.tableView) { tableView, indexPath, itemIdentifier in
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
+        let dataSource = UICollectionViewDiffableDataSource<Int, Store>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
             
             itemIdentifier.configureCell(cell)
             
             return cell
         }
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: UICollectionReusableView.self), for: indexPath)
+            
+            return supplementaryView
+        }
+        
+        self.dataSource = dataSource
     }
     
     public override func viewDidAppear(_ animated: Bool) {

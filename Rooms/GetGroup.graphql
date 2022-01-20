@@ -2,18 +2,30 @@ query GetGroup($groupCode: String!) {
   group: GetStoreGroupByCode(param: {
     groupCode: $groupCode
   }) {
-    ok
+    success: ok
     error {
       code
-      msg
+      message: msg
     }
-    data {
-      list {
-        _id
+    response: data {
+      storeList: list {
+        identifier: _id
         name
         code
-        zoneinfo {
-          tz
+        region: zoneinfo {
+          timeZone: tz
+        }
+        productList: products {
+          identifier: _id
+          name
+          subtitle: subTitle
+          code
+          imageList: images
+          informationList: infos {
+            identifier:key
+            title: label
+            message: content
+          }
         }
       }
     }
