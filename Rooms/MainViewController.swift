@@ -16,18 +16,18 @@ public final class MainViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        let snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
+        self.navigationItem.title = NSLocalizedString("#회의실", comment: "")
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: nil, action: nil)
+        ]
         
-        let dataSource = UITableViewDiffableDataSource<Int, Store>(tableView: self.contentView.tableView) { tableView, indexPath, itemIdentifier in
+        self.dataSource = UITableViewDiffableDataSource(tableView: self.contentView.tableView) { tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
             
             itemIdentifier.configureCell(cell)
             
             return cell
         }
-        dataSource.apply(snapshot, animatingDifferences: false)
-        
-        self.dataSource = dataSource
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -36,26 +36,30 @@ public final class MainViewController: UIViewController {
         Task.detached {
             let action = GetStoreList(groupCode: "FVFWKW")
             
-            let storeList: [Store]
+            let items: [Store]
             
             do {
-                storeList = try await action()
+                items = try await action()
             } catch {
                 os_log(.error, "%@", String(describing: error))
                 
                 return
             }
             
-            Task.detached { @MainActor in
-                var snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(storeList, toSection: 0)
-                
-                guard let dataSource = self.dataSource else {
-                    return
-                }
-                dataSource.apply(snapshot)
-            }
+            await self.reloadData(items: items)
         }
+    }
+}
+
+extension MainViewController {
+    private func reloadData(items: [Store]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(items, toSection: 0)
+        
+        guard let dataSource = self.dataSource else {
+            return
+        }
+        dataSource.apply(snapshot, animatingDifferences: dataSource.snapshot().numberOfSections != 0)
     }
 }

@@ -1,5 +1,7 @@
 import UIKit
 
+import ErrorKit
+
 public final class MainView: UIView {
     public let tableView: UITableView
     
@@ -15,7 +17,7 @@ public final class MainView: UIView {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
 }
 
@@ -25,8 +27,11 @@ extension MainView {
     }
     
     private func configureTableView() {
+        let refreshControl = UIRefreshControl()
+        
         let tableView = self.tableView
         tableView.register(StoreTableViewCell.self, forCellReuseIdentifier: String(describing: Store.self))
+        tableView.refreshControl = refreshControl
     }
     
     private func configureViewHierarchies() {

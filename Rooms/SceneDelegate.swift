@@ -21,8 +21,11 @@ extension SceneDelegate: UIWindowSceneDelegate {
             fatalError(String(describing: TypeCastingError()))
         }
         
+        let navigationController = UINavigationController(rootViewController: MainViewController())
+        navigationController.navigationBar.prefersLargeTitles = true
+        
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = MainViewController()
+        window.rootViewController = navigationController
         
         defer {
             window.makeKeyAndVisible()
