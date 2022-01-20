@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "OpenColorKit",
+        "repositoryURL": "https://github.com/jaemyeong/OpenColorKit.git",
+        "state": {
+          "branch": null,
+          "revision": "a1feb0472c932db9b11c2f80d6c0126f34ddc932",
+          "version": "0.1.4"
+        }
+      },
+      {
         "package": "SQLite.swift",
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {

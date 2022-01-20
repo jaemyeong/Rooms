@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B3989E327994FC8009F823D /* ElementKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3989E227994FC8009F823D /* ElementKind.swift */; };
+		7B3989E62799570F009F823D /* OpenColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B3989E52799570F009F823D /* OpenColorKit */; };
 		7B6B174E2799206A00C3C51D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B6B174D2799206A00C3C51D /* Settings.bundle */; };
 		7B92D63B27991A20002A102D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D63D27991A20002A102D /* InfoPlist.strings */; };
 		7B9A6A08279902B1007865E9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6A07279902B1007865E9 /* MainView.swift */; };
@@ -79,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BD92163279805CA00919BA3 /* ErrorKit in Frameworks */,
+				7B3989E62799570F009F823D /* OpenColorKit in Frameworks */,
 				7BD921572797F8B100919BA3 /* Apollo in Frameworks */,
 				7BD921592797F8B100919BA3 /* ApolloWebSocket in Frameworks */,
 			);
@@ -208,6 +210,7 @@
 				7BD921562797F8B100919BA3 /* Apollo */,
 				7BD921582797F8B100919BA3 /* ApolloWebSocket */,
 				7BD92162279805CA00919BA3 /* ErrorKit */,
+				7B3989E52799570F009F823D /* OpenColorKit */,
 			);
 			productName = Rooms;
 			productReference = 7BAC1C302797EEF3003148AA /* Rooms.app */;
@@ -284,6 +287,7 @@
 			packageReferences = (
 				7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				7BD92161279805CA00919BA3 /* XCRemoteSwiftPackageReference "ErrorKit" */,
+				7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */,
 			);
 			productRefGroup = 7BAC1C312797EEF3003148AA /* Products */;
 			projectDirPath = "";
@@ -689,6 +693,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/OpenColorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -702,12 +714,17 @@
 			repositoryURL = "https://github.com/jaemyeong/ErrorKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7B3989E52799570F009F823D /* OpenColorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */;
+			productName = OpenColorKit;
+		};
 		7BD921562797F8B100919BA3 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */;
