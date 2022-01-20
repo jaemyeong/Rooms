@@ -21,6 +21,7 @@ public final class GetGroupQuery: GraphQLQuery {
           __typename
           list {
             __typename
+            _id
             name
             code
             zoneinfo {
@@ -224,6 +225,7 @@ public final class GetGroupQuery: GraphQLQuery {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("_id", type: .nonNull(.scalar(GraphQLID.self))),
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("code", type: .nonNull(.scalar(String.self))),
               GraphQLField("zoneinfo", type: .nonNull(.object(Zoneinfo.selections))),
@@ -236,8 +238,8 @@ public final class GetGroupQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(name: String, code: String, zoneinfo: Zoneinfo) {
-            self.init(unsafeResultMap: ["__typename": "Store", "name": name, "code": code, "zoneinfo": zoneinfo.resultMap])
+          public init(_id: GraphQLID, name: String, code: String, zoneinfo: Zoneinfo) {
+            self.init(unsafeResultMap: ["__typename": "Store", "_id": _id, "name": name, "code": code, "zoneinfo": zoneinfo.resultMap])
           }
 
           public var __typename: String {
@@ -246,6 +248,15 @@ public final class GetGroupQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var _id: GraphQLID {
+            get {
+              return resultMap["_id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "_id")
             }
           }
 

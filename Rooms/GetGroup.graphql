@@ -9,6 +9,7 @@ query GetGroup($groupCode: String!) {
     }
     data {
       list {
+        _id
         name
         code
         zoneinfo {
