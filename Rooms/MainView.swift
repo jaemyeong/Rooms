@@ -29,7 +29,7 @@ public final class MainView: UIView {
                         widthDimension: .fractionalWidth(1.0),
                         heightDimension: .absolute(44.0)
                     ),
-                    elementKind: ElementKind.sectionHeader,
+                    elementKind: UICollectionView.elementKindSectionHeader,
                     alignment: .top
                 )
             ]
@@ -62,7 +62,7 @@ extension MainView {
         
         let collectionView = self.collectionView
         collectionView.register(StoreTableViewCell.self, forCellWithReuseIdentifier: String(describing: Store.self))
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: ElementKind.sectionHeader, withReuseIdentifier: String(describing: UICollectionReusableView.self))
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: UICollectionReusableView.self))
         collectionView.refreshControl = refreshControl
     }
     
