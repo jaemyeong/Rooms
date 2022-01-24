@@ -10,12 +10,14 @@ public struct Store {
     public var code: String
     
     public var timeZone: TimeZone
+    
+    public var products: [Product]
 }
 
 extension Store: Hashable {}
 
 extension Store {
-    public init(data: GetGroupQuery.Data.Group.Response.StoreList) throws {
+    public init(data: GetGroupQuery.Data.Group.Response.Store) throws {
         guard let timeZone = TimeZone(identifier: data.region.timeZone) else {
             throw InstantiateError(message: NSLocalizedString("TimeZone", comment: ""))
         }
@@ -27,13 +29,11 @@ extension Store {
         self.code = data.code
         
         self.timeZone = timeZone
+        
+        self.products = data.products?.map(Product.init(data:)) ?? []
     }
 }
 
 extension Store {
-    public func configureCell(_ cell: UICollectionViewCell) {
-        guard let cell = cell as? StoreTableViewCell else {
-            fatalError(String(describing: TypeCastingError()))
-        }
-    }
+    public func configureCell(_ cell: UICollectionViewCell) {}
 }

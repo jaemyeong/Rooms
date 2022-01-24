@@ -35,7 +35,7 @@ public struct GetStoreList {
                     let items: [Store]
                     
                     do {
-                        guard let unwrappedItems = try value.data?.group.response?.storeList?.map(Store.init(data:)) else {
+                        guard let unwrappedItems = try value.data?.group.response?.stores?.map(Store.init(data:)) else {
                             continuation.resume(throwing: NilError())
                             
                             return

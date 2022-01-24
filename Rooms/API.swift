@@ -19,7 +19,7 @@ public final class GetGroupQuery: GraphQLQuery {
         }
         response: data {
           __typename
-          storeList: list {
+          stores: list {
             __typename
             identifier: _id
             name
@@ -28,14 +28,14 @@ public final class GetGroupQuery: GraphQLQuery {
               __typename
               timeZone: tz
             }
-            productList: products {
+            products {
               __typename
               identifier: _id
               name
               subtitle: subTitle
               code
-              imageList: images
-              informationList: infos {
+              images
+              informations: infos {
                 __typename
                 identifier: key
                 title: label
@@ -201,7 +201,7 @@ public final class GetGroupQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("list", alias: "storeList", type: .list(.nonNull(.object(StoreList.selections)))),
+            GraphQLField("list", alias: "stores", type: .list(.nonNull(.object(Store.selections)))),
           ]
         }
 
@@ -211,8 +211,8 @@ public final class GetGroupQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(storeList: [StoreList]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "StoreGroup", "storeList": storeList.flatMap { (value: [StoreList]) -> [ResultMap] in value.map { (value: StoreList) -> ResultMap in value.resultMap } }])
+        public init(stores: [Store]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "StoreGroup", "stores": stores.flatMap { (value: [Store]) -> [ResultMap] in value.map { (value: Store) -> ResultMap in value.resultMap } }])
         }
 
         public var __typename: String {
@@ -224,16 +224,16 @@ public final class GetGroupQuery: GraphQLQuery {
           }
         }
 
-        public var storeList: [StoreList]? {
+        public var stores: [Store]? {
           get {
-            return (resultMap["storeList"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [StoreList] in value.map { (value: ResultMap) -> StoreList in StoreList(unsafeResultMap: value) } }
+            return (resultMap["stores"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Store] in value.map { (value: ResultMap) -> Store in Store(unsafeResultMap: value) } }
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [StoreList]) -> [ResultMap] in value.map { (value: StoreList) -> ResultMap in value.resultMap } }, forKey: "storeList")
+            resultMap.updateValue(newValue.flatMap { (value: [Store]) -> [ResultMap] in value.map { (value: Store) -> ResultMap in value.resultMap } }, forKey: "stores")
           }
         }
 
-        public struct StoreList: GraphQLSelectionSet {
+        public struct Store: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Store"]
 
           public static var selections: [GraphQLSelection] {
@@ -243,7 +243,7 @@ public final class GetGroupQuery: GraphQLQuery {
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("code", type: .nonNull(.scalar(String.self))),
               GraphQLField("zoneinfo", alias: "region", type: .nonNull(.object(Region.selections))),
-              GraphQLField("products", alias: "productList", type: .list(.nonNull(.object(ProductList.selections)))),
+              GraphQLField("products", type: .list(.nonNull(.object(Product.selections)))),
             ]
           }
 
@@ -253,8 +253,8 @@ public final class GetGroupQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(identifier: GraphQLID, name: String, code: String, region: Region, productList: [ProductList]? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Store", "identifier": identifier, "name": name, "code": code, "region": region.resultMap, "productList": productList.flatMap { (value: [ProductList]) -> [ResultMap] in value.map { (value: ProductList) -> ResultMap in value.resultMap } }])
+          public init(identifier: GraphQLID, name: String, code: String, region: Region, products: [Product]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Store", "identifier": identifier, "name": name, "code": code, "region": region.resultMap, "products": products.flatMap { (value: [Product]) -> [ResultMap] in value.map { (value: Product) -> ResultMap in value.resultMap } }])
           }
 
           public var __typename: String {
@@ -302,12 +302,12 @@ public final class GetGroupQuery: GraphQLQuery {
             }
           }
 
-          public var productList: [ProductList]? {
+          public var products: [Product]? {
             get {
-              return (resultMap["productList"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [ProductList] in value.map { (value: ResultMap) -> ProductList in ProductList(unsafeResultMap: value) } }
+              return (resultMap["products"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Product] in value.map { (value: ResultMap) -> Product in Product(unsafeResultMap: value) } }
             }
             set {
-              resultMap.updateValue(newValue.flatMap { (value: [ProductList]) -> [ResultMap] in value.map { (value: ProductList) -> ResultMap in value.resultMap } }, forKey: "productList")
+              resultMap.updateValue(newValue.flatMap { (value: [Product]) -> [ResultMap] in value.map { (value: Product) -> ResultMap in value.resultMap } }, forKey: "products")
             }
           }
 
@@ -350,7 +350,7 @@ public final class GetGroupQuery: GraphQLQuery {
             }
           }
 
-          public struct ProductList: GraphQLSelectionSet {
+          public struct Product: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["Product"]
 
             public static var selections: [GraphQLSelection] {
@@ -360,8 +360,8 @@ public final class GetGroupQuery: GraphQLQuery {
                 GraphQLField("name", type: .nonNull(.scalar(String.self))),
                 GraphQLField("subTitle", alias: "subtitle", type: .scalar(String.self)),
                 GraphQLField("code", type: .nonNull(.scalar(String.self))),
-                GraphQLField("images", alias: "imageList", type: .list(.nonNull(.scalar(String.self)))),
-                GraphQLField("infos", alias: "informationList", type: .list(.nonNull(.object(InformationList.selections)))),
+                GraphQLField("images", type: .list(.nonNull(.scalar(String.self)))),
+                GraphQLField("infos", alias: "informations", type: .list(.nonNull(.object(Information.selections)))),
               ]
             }
 
@@ -371,8 +371,8 @@ public final class GetGroupQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(identifier: GraphQLID, name: String, subtitle: String? = nil, code: String, imageList: [String]? = nil, informationList: [InformationList]? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Product", "identifier": identifier, "name": name, "subtitle": subtitle, "code": code, "imageList": imageList, "informationList": informationList.flatMap { (value: [InformationList]) -> [ResultMap] in value.map { (value: InformationList) -> ResultMap in value.resultMap } }])
+            public init(identifier: GraphQLID, name: String, subtitle: String? = nil, code: String, images: [String]? = nil, informations: [Information]? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Product", "identifier": identifier, "name": name, "subtitle": subtitle, "code": code, "images": images, "informations": informations.flatMap { (value: [Information]) -> [ResultMap] in value.map { (value: Information) -> ResultMap in value.resultMap } }])
             }
 
             public var __typename: String {
@@ -420,25 +420,25 @@ public final class GetGroupQuery: GraphQLQuery {
               }
             }
 
-            public var imageList: [String]? {
+            public var images: [String]? {
               get {
-                return resultMap["imageList"] as? [String]
+                return resultMap["images"] as? [String]
               }
               set {
-                resultMap.updateValue(newValue, forKey: "imageList")
+                resultMap.updateValue(newValue, forKey: "images")
               }
             }
 
-            public var informationList: [InformationList]? {
+            public var informations: [Information]? {
               get {
-                return (resultMap["informationList"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [InformationList] in value.map { (value: ResultMap) -> InformationList in InformationList(unsafeResultMap: value) } }
+                return (resultMap["informations"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Information] in value.map { (value: ResultMap) -> Information in Information(unsafeResultMap: value) } }
               }
               set {
-                resultMap.updateValue(newValue.flatMap { (value: [InformationList]) -> [ResultMap] in value.map { (value: InformationList) -> ResultMap in value.resultMap } }, forKey: "informationList")
+                resultMap.updateValue(newValue.flatMap { (value: [Information]) -> [ResultMap] in value.map { (value: Information) -> ResultMap in value.resultMap } }, forKey: "informations")
               }
             }
 
-            public struct InformationList: GraphQLSelectionSet {
+            public struct Information: GraphQLSelectionSet {
               public static let possibleTypes: [String] = ["Info"]
 
               public static var selections: [GraphQLSelection] {

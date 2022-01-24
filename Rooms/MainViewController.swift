@@ -7,7 +7,7 @@ public final class MainViewController: UIViewController {
         self.view as! MainView
     }
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Store>?
+    private var dataSource: UICollectionViewDiffableDataSource<Store, Product>?
     
     public override func loadView() {
         self.view = MainView()
@@ -21,15 +21,13 @@ public final class MainViewController: UIViewController {
             UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: nil, action: nil)
         ]
         
-        let dataSource = UICollectionViewDiffableDataSource<Int, Store>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
+        let dataSource = UICollectionViewDiffableDataSource<Store, Product>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
-            
-            itemIdentifier.configureCell(cell)
             
             return cell
         }
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: UICollectionReusableView.self), for: indexPath)
+            let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: Store.self), for: indexPath)
             
             return supplementaryView
         }
@@ -60,9 +58,12 @@ public final class MainViewController: UIViewController {
 
 extension MainViewController {
     private func reloadData(items: [Store]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(items, toSection: 0)
+        var snapshot = NSDiffableDataSourceSnapshot<Store, Product>()
+        
+        items.forEach { item in
+            snapshot.appendSections([item])
+            snapshot.appendItems(item.products, toSection: item)
+        }
         
         guard let dataSource = self.dataSource else {
             return

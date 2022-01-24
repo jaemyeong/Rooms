@@ -8,20 +8,20 @@ query GetGroup($groupCode: String!) {
       message: msg
     }
     response: data {
-      storeList: list {
+      stores: list {
         identifier: _id
         name
         code
         region: zoneinfo {
           timeZone: tz
         }
-        productList: products {
+        products {
           identifier: _id
           name
           subtitle: subTitle
           code
-          imageList: images
-          informationList: infos {
+          images
+          informations: infos {
             identifier:key
             title: label
             message: content

@@ -52,6 +52,10 @@ public final class MainView: UIView {
     }
 }
 
+public final class StoreCollectionReusableView: UICollectionReusableView {
+    
+}
+
 extension MainView {
     private func configure() {
         self.backgroundColor = .systemBackground
@@ -61,8 +65,8 @@ extension MainView {
         let refreshControl = UIRefreshControl()
         
         let collectionView = self.collectionView
-        collectionView.register(StoreTableViewCell.self, forCellWithReuseIdentifier: String(describing: Store.self))
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: UICollectionReusableView.self))
+        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: Product.self))
+        collectionView.register(StoreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
         collectionView.refreshControl = refreshControl
     }
     
