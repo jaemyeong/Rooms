@@ -7,31 +7,90 @@ public final class MainView: UIView {
     
     public override init(frame: CGRect) {
         let collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let section =  NSCollectionLayoutSection(
-                group: .vertical(
-                    layoutSize: NSCollectionLayoutSize(
-                        widthDimension: .fractionalWidth(1.0),
-                        heightDimension: .absolute(44.0)
-                    ),
-                    subitems: [
-                        NSCollectionLayoutItem(
-                            layoutSize: NSCollectionLayoutSize(
-                                widthDimension: .fractionalWidth(0.5),
-                                heightDimension: .fractionalHeight(1.0)
-                            )
-                        )
-                    ]
-                )
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(44.0)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
             )
-            section.boundarySupplementaryItems = [
-                NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: NSCollectionLayoutSize(
-                        widthDimension: .fractionalWidth(1.0),
-                        heightDimension: .absolute(44.0)
-                    ),
-                    elementKind: UICollectionView.elementKindSectionHeader,
-                    alignment: .top
+            sectionHeader.pinToVisibleBounds = true
+            
+            let section: NSCollectionLayoutSection
+            
+            if layoutEnvironment.traitCollection.userInterfaceIdiom == .pad {
+                section =  NSCollectionLayoutSection(
+                    group: .horizontal(
+                        layoutSize: NSCollectionLayoutSize(
+                            widthDimension: .fractionalWidth(1.0),
+                            heightDimension: .estimated(
+                                max(
+                                    layoutEnvironment.container.effectiveContentSize.width / 4.0,
+                                    layoutEnvironment.container.effectiveContentSize.height / 4.0
+                                )
+                            )
+                        ),
+                        subitems: [
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.25),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            ),
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.25),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            ),
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.25),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            ),
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.25),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            )
+                        ]
+                    )
                 )
+            } else {
+                section =  NSCollectionLayoutSection(
+                    group: .horizontal(
+                        layoutSize: NSCollectionLayoutSize(
+                            widthDimension: .fractionalWidth(1.0),
+                            heightDimension: .estimated(
+                                max(
+                                    layoutEnvironment.container.effectiveContentSize.width / 2.0,
+                                    layoutEnvironment.container.effectiveContentSize.height / 4.0
+                                )
+                            )
+                        ),
+                        subitems: [
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.5),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            ),
+                            NSCollectionLayoutItem(
+                                layoutSize: NSCollectionLayoutSize(
+                                    widthDimension: .fractionalWidth(0.5),
+                                    heightDimension: .fractionalHeight(1.0)
+                                )
+                            )
+                        ]
+                    )
+                )
+            }
+            
+            section.boundarySupplementaryItems = [
+                sectionHeader
             ]
             
             return section
@@ -61,8 +120,9 @@ extension MainView {
         let refreshControl = UIRefreshControl()
         
         let collectionView = self.collectionView
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: Product.self))
-        collectionView.register(StoreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
+        collectionView.register(StoreCollectionSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
         collectionView.refreshControl = refreshControl
     }
     

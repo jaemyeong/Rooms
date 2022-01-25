@@ -26,8 +26,20 @@ public final class MainViewController: UIViewController {
             
             return cell
         }
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            guard let self = self else {
+                return nil
+            }
+            
+            guard let store = self.dataSource?.snapshot().sectionIdentifiers[indexPath.section] else {
+                return nil
+            }
+            
             let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: Store.self), for: indexPath)
+            
+            if let supplementaryView = supplementaryView as? StoreCollectionSupplementaryView {
+                supplementaryView.textLabel.text = store.name
+            }
             
             return supplementaryView
         }
