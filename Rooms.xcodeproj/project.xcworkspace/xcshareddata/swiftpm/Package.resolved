@@ -15,7 +15,25 @@
         "repositoryURL": "https://github.com/jaemyeong/ErrorKit.git",
         "state": {
           "branch": null,
-          "revision": "9615d6f60ca160839e8e74d72778284639364aa1",
+          "revision": "47783be927f14edbdecc86eae3eb03f6b6bec9d9",
+          "version": "0.1.2"
+        }
+      },
+      {
+        "package": "OpenColorKit",
+        "repositoryURL": "https://github.com/jaemyeong/OpenColorKit.git",
+        "state": {
+          "branch": null,
+          "revision": "a1feb0472c932db9b11c2f80d6c0126f34ddc932",
+          "version": "0.1.4"
+        }
+      },
+      {
+        "package": "Pretendard",
+        "repositoryURL": "https://github.com/jaemyeong/Pretendard.git",
+        "state": {
+          "branch": null,
+          "revision": "76a2291ec424fe4003fa496463d85c2114c9d984",
           "version": "0.1.1"
         }
       },

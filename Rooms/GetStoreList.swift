@@ -26,8 +26,8 @@ public struct GetStoreList {
                 
                 switch result {
                 case .success(let value):
-                    guard value.data?.group.error == nil else {
-                        continuation.resume(throwing: UnknownError())
+                    if let error = value.data?.group.error {
+                        continuation.resume(throwing: UnknownError(message: error.message))
                         
                         return
                     }
@@ -35,7 +35,7 @@ public struct GetStoreList {
                     let items: [Store]
                     
                     do {
-                        guard let unwrappedItems = try value.data?.group.data?.list?.map(Store.init(data:)) else {
+                        guard let unwrappedItems = try value.data?.group.response?.stores?.map(Store.init(data:)) else {
                             continuation.resume(throwing: NilError())
                             
                             return

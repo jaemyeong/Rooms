@@ -1,21 +1,54 @@
 import UIKit
 
+import ErrorKit
+
 public final class MainView: UIView {
-    public let tableView: UITableView
+    public let collectionView: UICollectionView
     
     public override init(frame: CGRect) {
-        self.tableView = UITableView(frame: frame, style: .plain)
+        let collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            let section =  NSCollectionLayoutSection(
+                group: .vertical(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1.0),
+                        heightDimension: .absolute(44.0)
+                    ),
+                    subitems: [
+                        NSCollectionLayoutItem(
+                            layoutSize: NSCollectionLayoutSize(
+                                widthDimension: .fractionalWidth(0.5),
+                                heightDimension: .fractionalHeight(1.0)
+                            )
+                        )
+                    ]
+                )
+            )
+            section.boundarySupplementaryItems = [
+                NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1.0),
+                        heightDimension: .absolute(44.0)
+                    ),
+                    elementKind: UICollectionView.elementKindSectionHeader,
+                    alignment: .top
+                )
+            ]
+            
+            return section
+        }
+        
+        self.collectionView = UICollectionView(frame: frame, collectionViewLayout: collectionViewLayout)
         
         super.init(frame: frame)
         
         self.configure()
-        self.configureTableView()
+        self.configureCollectionView()
         self.configureViewHierarchies()
         self.configureLayoutConstraints()
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
 }
 
@@ -24,27 +57,31 @@ extension MainView {
         self.backgroundColor = .systemBackground
     }
     
-    private func configureTableView() {
-        let tableView = self.tableView
-        tableView.register(StoreTableViewCell.self, forCellReuseIdentifier: String(describing: Store.self))
+    private func configureCollectionView() {
+        let refreshControl = UIRefreshControl()
+        
+        let collectionView = self.collectionView
+        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: Product.self))
+        collectionView.register(StoreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
+        collectionView.refreshControl = refreshControl
     }
     
     private func configureViewHierarchies() {
-        let tableView = self.tableView
+        let collectionView = self.collectionView
         
-        self.addSubview(tableView)
+        self.addSubview(collectionView)
     }
     
     private func configureLayoutConstraints() {
-        let tableView = self.tableView
+        let collectionView = self.collectionView
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraints([
-            tableView.topAnchor.constraint(equalTo: self.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            self.bottomAnchor.constraint(equalTo: tableView.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor)
         ])
     }
 }

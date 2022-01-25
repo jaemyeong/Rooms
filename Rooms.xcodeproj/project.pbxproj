@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B040669279FBD89009C62BB /* Pretendard in Frameworks */ = {isa = PBXBuildFile; productRef = 7B040668279FBD89009C62BB /* Pretendard */; };
+		7B04066B279FBDDB009C62BB /* StoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04066A279FBDDB009C62BB /* StoreCollectionReusableView.swift */; };
+		7B3989E62799570F009F823D /* OpenColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B3989E52799570F009F823D /* OpenColorKit */; };
+		7B6B174E2799206A00C3C51D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B6B174D2799206A00C3C51D /* Settings.bundle */; };
+		7B92D63B27991A20002A102D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D63D27991A20002A102D /* InfoPlist.strings */; };
 		7B9A6A08279902B1007865E9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6A07279902B1007865E9 /* MainView.swift */; };
-		7B9A6A0A27990AFB007865E9 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6A0927990AFB007865E9 /* StoreTableViewCell.swift */; };
+		7B9A6A0A27990AFB007865E9 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6A0927990AFB007865E9 /* ProductCollectionViewCell.swift */; };
 		7BA19E322798EEFD00C72427 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA19E312798EEFD00C72427 /* Store.swift */; };
 		7BA19E342798EFD200C72427 /* GetStoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA19E332798EFD200C72427 /* GetStoreList.swift */; };
 		7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC1C332797EEF3003148AA /* AppDelegate.swift */; };
@@ -24,6 +29,7 @@
 		7BD9215E279800BA00919BA3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9215D279800BA00919BA3 /* API.swift */; };
 		7BD921602798012B00919BA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9215F2798012B00919BA3 /* Network.swift */; };
 		7BD92163279805CA00919BA3 /* ErrorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD92162279805CA00919BA3 /* ErrorKit */; };
+		7BF6E70C279E9AD70009AF50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6E70B279E9AD70009AF50 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B04066A279FBDDB009C62BB /* StoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCollectionReusableView.swift; sourceTree = "<group>"; };
+		7B6B174D2799206A00C3C51D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7B92D63C27991A20002A102D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B9A6A07279902B1007865E9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		7B9A6A0927990AFB007865E9 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		7B9A6A0927990AFB007865E9 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		7BA19E302798EC9400C72427 /* Rooms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rooms.xctestplan; sourceTree = "<group>"; };
 		7BA19E312798EEFD00C72427 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		7BA19E332798EFD200C72427 /* GetStoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStoreList.swift; sourceTree = "<group>"; };
@@ -65,6 +74,7 @@
 		7BD9215C2798007700919BA3 /* GetGroup.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetGroup.graphql; sourceTree = "<group>"; };
 		7BD9215D279800BA00919BA3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7BD9215F2798012B00919BA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		7BF6E70B279E9AD70009AF50 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +83,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BD92163279805CA00919BA3 /* ErrorKit in Frameworks */,
+				7B3989E62799570F009F823D /* OpenColorKit in Frameworks */,
 				7BD921572797F8B100919BA3 /* Apollo in Frameworks */,
 				7BD921592797F8B100919BA3 /* ApolloWebSocket in Frameworks */,
+				7B040669279FBD89009C62BB /* Pretendard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,14 +107,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B9BCC0A279860AA00163CB2 /* API */ = {
+		7B92D63E27991B62002A102D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7BD9215F2798012B00919BA3 /* Network.swift */,
-				7BA19E312798EEFD00C72427 /* Store.swift */,
-				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
+				7B9A6A07279902B1007865E9 /* MainView.swift */,
+				7BAC1C372797EEF3003148AA /* MainViewController.swift */,
 			);
-			path = API;
+			name = Main;
+			sourceTree = "<group>";
+		};
+		7B92D63F27991B6A002A102D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A6A0927990AFB007865E9 /* ProductCollectionViewCell.swift */,
+				7B04066A279FBDDB009C62BB /* StoreCollectionReusableView.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		7B9BCC0B279860D300163CB2 /* Resources */ = {
@@ -111,9 +131,11 @@
 				7BD9215C2798007700919BA3 /* GetGroup.graphql */,
 				7BD9215B2797FA9500919BA3 /* schema.json */,
 				7BAC1C412797EEF4003148AA /* Info.plist */,
+				7B92D63D27991A20002A102D /* InfoPlist.strings */,
 				7BAC1C3C2797EEF4003148AA /* Assets.xcassets */,
 				7BA19E302798EC9400C72427 /* Rooms.xctestplan */,
 				7BAC1C3E2797EEF4003148AA /* LaunchScreen.storyboard */,
+				7B6B174D2799206A00C3C51D /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -143,11 +165,13 @@
 			children = (
 				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
 				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
-				7BAC1C372797EEF3003148AA /* MainViewController.swift */,
-				7B9A6A07279902B1007865E9 /* MainView.swift */,
-				7B9A6A0927990AFB007865E9 /* StoreTableViewCell.swift */,
 				7BD9215D279800BA00919BA3 /* API.swift */,
-				7B9BCC0A279860AA00163CB2 /* API */,
+				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
+				7BD9215F2798012B00919BA3 /* Network.swift */,
+				7BA19E312798EEFD00C72427 /* Store.swift */,
+				7BF6E70B279E9AD70009AF50 /* Product.swift */,
+				7B92D63F27991B6A002A102D /* UI */,
+				7B92D63E27991B62002A102D /* Main */,
 				7B9BCC0B279860D300163CB2 /* Resources */,
 			);
 			path = Rooms;
@@ -191,6 +215,8 @@
 				7BD921562797F8B100919BA3 /* Apollo */,
 				7BD921582797F8B100919BA3 /* ApolloWebSocket */,
 				7BD92162279805CA00919BA3 /* ErrorKit */,
+				7B3989E52799570F009F823D /* OpenColorKit */,
+				7B040668279FBD89009C62BB /* Pretendard */,
 			);
 			productName = Rooms;
 			productReference = 7BAC1C302797EEF3003148AA /* Rooms.app */;
@@ -267,6 +293,8 @@
 			packageReferences = (
 				7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				7BD92161279805CA00919BA3 /* XCRemoteSwiftPackageReference "ErrorKit" */,
+				7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */,
+				7B040667279FBD89009C62BB /* XCRemoteSwiftPackageReference "Pretendard" */,
 			);
 			productRefGroup = 7BAC1C312797EEF3003148AA /* Products */;
 			projectDirPath = "";
@@ -284,7 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B6B174E2799206A00C3C51D /* Settings.bundle in Resources */,
 				7BAC1C402797EEF4003148AA /* LaunchScreen.storyboard in Resources */,
+				7B92D63B27991A20002A102D /* InfoPlist.strings in Resources */,
 				7BAC1C3D2797EEF4003148AA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n# \"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://api.space.stayjanda.cloud/graphql\"\n";
+			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Don't run this during Xcode Server builds\nif [ $XCS ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n# \"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://api.space.stayjanda.cloud/graphql\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -334,10 +364,12 @@
 				7BD921602798012B00919BA3 /* Network.swift in Sources */,
 				7B9A6A08279902B1007865E9 /* MainView.swift in Sources */,
 				7BAC1C382797EEF3003148AA /* MainViewController.swift in Sources */,
-				7B9A6A0A27990AFB007865E9 /* StoreTableViewCell.swift in Sources */,
+				7B9A6A0A27990AFB007865E9 /* ProductCollectionViewCell.swift in Sources */,
 				7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */,
 				7BA19E322798EEFD00C72427 /* Store.swift in Sources */,
 				7BD9215E279800BA00919BA3 /* API.swift in Sources */,
+				7B04066B279FBDDB009C62BB /* StoreCollectionReusableView.swift in Sources */,
+				7BF6E70C279E9AD70009AF50 /* Product.swift in Sources */,
 				7BAC1C362797EEF3003148AA /* SceneDelegate.swift in Sources */,
 				7BA19E342798EFD200C72427 /* GetStoreList.swift in Sources */,
 			);
@@ -376,6 +408,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7B92D63D27991A20002A102D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B92D63C27991A20002A102D /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		7BAC1C3E2797EEF4003148AA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -661,6 +701,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7B040667279FBD89009C62BB /* XCRemoteSwiftPackageReference "Pretendard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/Pretendard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
+		7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/OpenColorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -674,12 +730,22 @@
 			repositoryURL = "https://github.com/jaemyeong/ErrorKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7B040668279FBD89009C62BB /* Pretendard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B040667279FBD89009C62BB /* XCRemoteSwiftPackageReference "Pretendard" */;
+			productName = Pretendard;
+		};
+		7B3989E52799570F009F823D /* OpenColorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */;
+			productName = OpenColorKit;
+		};
 		7BD921562797F8B100919BA3 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */;

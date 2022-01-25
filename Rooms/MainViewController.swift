@@ -7,7 +7,7 @@ public final class MainViewController: UIViewController {
         self.view as! MainView
     }
     
-    private var dataSource: UITableViewDiffableDataSource<Int, Store>?
+    private var dataSource: UICollectionViewDiffableDataSource<Store, Product>?
     
     public override func loadView() {
         self.view = MainView()
@@ -16,16 +16,21 @@ public final class MainViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        let snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
+        self.navigationItem.title = NSLocalizedString("#회의실", comment: "")
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: nil, action: nil)
+        ]
         
-        let dataSource = UITableViewDiffableDataSource<Int, Store>(tableView: self.contentView.tableView) { tableView, indexPath, itemIdentifier in
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
-            
-            itemIdentifier.configureCell(cell)
+        let dataSource = UICollectionViewDiffableDataSource<Store, Product>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
             
             return cell
         }
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: Store.self), for: indexPath)
+            
+            return supplementaryView
+        }
         
         self.dataSource = dataSource
     }
@@ -36,26 +41,33 @@ public final class MainViewController: UIViewController {
         Task.detached {
             let action = GetStoreList(groupCode: "FVFWKW")
             
-            let storeList: [Store]
+            let items: [Store]
             
             do {
-                storeList = try await action()
+                items = try await action()
             } catch {
                 os_log(.error, "%@", String(describing: error))
                 
                 return
             }
             
-            Task.detached { @MainActor in
-                var snapshot = NSDiffableDataSourceSnapshot<Int, Store>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(storeList, toSection: 0)
-                
-                guard let dataSource = self.dataSource else {
-                    return
-                }
-                dataSource.apply(snapshot)
-            }
+            await self.reloadData(items: items)
         }
+    }
+}
+
+extension MainViewController {
+    private func reloadData(items: [Store]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Store, Product>()
+        
+        items.forEach { item in
+            snapshot.appendSections([item])
+            snapshot.appendItems(item.products, toSection: item)
+        }
+        
+        guard let dataSource = self.dataSource else {
+            return
+        }
+        dataSource.apply(snapshot, animatingDifferences: dataSource.snapshot().numberOfSections != 0)
     }
 }
