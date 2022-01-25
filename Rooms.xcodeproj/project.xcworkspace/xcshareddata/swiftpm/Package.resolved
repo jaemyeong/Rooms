@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/jaemyeong/ErrorKit.git",
         "state": {
           "branch": null,
-          "revision": "9615d6f60ca160839e8e74d72778284639364aa1",
-          "version": "0.1.1"
+          "revision": "47783be927f14edbdecc86eae3eb03f6b6bec9d9",
+          "version": "0.1.2"
         }
       },
       {
@@ -26,6 +26,15 @@
           "branch": null,
           "revision": "a1feb0472c932db9b11c2f80d6c0126f34ddc932",
           "version": "0.1.4"
+        }
+      },
+      {
+        "package": "Pretendard",
+        "repositoryURL": "https://github.com/jaemyeong/Pretendard.git",
+        "state": {
+          "branch": null,
+          "revision": "cf0b169318c6bc507c62cdb017e52ebf31425aed",
+          "version": "0.1.0"
         }
       },
       {

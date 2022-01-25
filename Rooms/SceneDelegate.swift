@@ -2,6 +2,8 @@ import UIKit
 
 import ErrorKit
 
+import Pretendard
+
 public final class SceneDelegate: UIResponder {
     private var internalWindow: UIWindow?
 }
@@ -23,6 +25,14 @@ extension SceneDelegate: UIWindowSceneDelegate {
         
         let navigationController = UINavigationController(rootViewController: MainViewController())
         navigationController.navigationBar.prefersLargeTitles = true
+        
+        let appearance = UINavigationBar.appearance()
+        appearance.titleTextAttributes = [
+            .font: Pretendard.bold.font(ofSize: 14.0)!
+        ]
+        appearance.largeTitleTextAttributes = [
+            .font: Pretendard.bold.font(ofSize: 24.0)!
+        ]
         
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController

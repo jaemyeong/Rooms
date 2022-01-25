@@ -52,10 +52,6 @@ public final class MainView: UIView {
     }
 }
 
-public final class StoreCollectionReusableView: UICollectionReusableView {
-    
-}
-
 extension MainView {
     private func configure() {
         self.backgroundColor = .systemBackground
