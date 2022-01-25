@@ -27,12 +27,26 @@ extension SceneDelegate: UIWindowSceneDelegate {
         navigationController.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBar.appearance()
-        appearance.titleTextAttributes = [
-            .font: Pretendard.bold.font(ofSize: 14.0)!
-        ]
-        appearance.largeTitleTextAttributes = [
-            .font: Pretendard.bold.font(ofSize: 24.0)!
-        ]
+        
+        do {
+            if let font = try UIFont.pretendardFont(ofSize: 17.0, weight: .semibold) {
+                appearance.titleTextAttributes = [
+                    .font: font
+                ]
+            }
+        } catch {
+            
+        }
+        
+        do {
+            if let font = try UIFont.pretendardFont(ofSize: 34.0, weight: .bold) {
+                appearance.largeTitleTextAttributes = [
+                    .font: font
+                ]
+            }
+        } catch {
+            
+        }
         
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController

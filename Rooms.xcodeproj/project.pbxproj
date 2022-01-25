@@ -706,7 +706,7 @@
 			repositoryURL = "https://github.com/jaemyeong/Pretendard.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 		7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */ = {
