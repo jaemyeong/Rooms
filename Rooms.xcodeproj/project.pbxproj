@@ -150,15 +150,16 @@
 		7B9BCC0B279860D300163CB2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B0E283427A11D440040382C /* GoogleService-Info.plist */,
+				7B6B174D2799206A00C3C51D /* Settings.bundle */,
+				7B0E283E27A1337F0040382C /* Rooms.entitlements */,
 				7BD9215C2798007700919BA3 /* GetGroup.graphql */,
 				7BD9215B2797FA9500919BA3 /* schema.json */,
+				7B0E283427A11D440040382C /* GoogleService-Info.plist */,
 				7BAC1C412797EEF4003148AA /* Info.plist */,
-				7B92D63D27991A20002A102D /* InfoPlist.strings */,
 				7BAC1C3C2797EEF4003148AA /* Assets.xcassets */,
 				7BA19E302798EC9400C72427 /* Rooms.xctestplan */,
+				7B92D63D27991A20002A102D /* InfoPlist.strings */,
 				7BAC1C3E2797EEF4003148AA /* LaunchScreen.storyboard */,
-				7B6B174D2799206A00C3C51D /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -187,17 +188,16 @@
 		7BAC1C322797EEF3003148AA /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				7B0E283E27A1337F0040382C /* Rooms.entitlements */,
-				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
-				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
 				7BD9215D279800BA00919BA3 /* API.swift */,
+				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
 				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
 				7BD9215F2798012B00919BA3 /* Network.swift */,
-				7BA19E312798EEFD00C72427 /* Store.swift */,
 				7BF6E70B279E9AD70009AF50 /* Product.swift */,
-				7B92D63F27991B6A002A102D /* UI */,
+				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
+				7BA19E312798EEFD00C72427 /* Store.swift */,
 				7B92D63E27991B62002A102D /* Main */,
 				7B9BCC0B279860D300163CB2 /* Resources */,
+				7B92D63F27991B6A002A102D /* UI */,
 			);
 			path = Rooms;
 			sourceTree = "<group>";
