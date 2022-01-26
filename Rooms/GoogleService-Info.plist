@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>113175997960-v3nhfhb53hcd0p2b73ukbi5q8pdsqtk4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.113175997960-v3nhfhb53hcd0p2b73ukbi5q8pdsqtk4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCrPrsq3TMdZdoVJ47CVQOOfvxIPF7VYCI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>113175997960</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>so.object.Rooms</string>
+	<key>PROJECT_ID</key>
+	<string>rooms-d9dd8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rooms-d9dd8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:113175997960:ios:0fa7abf200bd69ae8cebbd</string>
+</dict>
+</plist>

@@ -7,6 +7,29 @@ public final class MainView: UIView {
     
     public override init(frame: CGRect) {
         let collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            let numberOfColumns = layoutEnvironment.traitCollection.horizontalSizeClass == .regular ? 3 : 2
+            
+            let section = NSCollectionLayoutSection(
+                group: .horizontal(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1.0),
+                        heightDimension: .estimated(
+                            max(
+                                layoutEnvironment.container.effectiveContentSize.width / CGFloat(numberOfColumns),
+                                layoutEnvironment.container.effectiveContentSize.height / 4.0
+                            )
+                        )
+                    ),
+                    subitem: NSCollectionLayoutItem(
+                        layoutSize: NSCollectionLayoutSize(
+                            widthDimension: .fractionalWidth(1.0 / CGFloat(numberOfColumns)),
+                            heightDimension: .fractionalHeight(1.0)
+                        )
+                    ),
+                    count: numberOfColumns
+                )
+            )
+            
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
@@ -16,78 +39,6 @@ public final class MainView: UIView {
                 alignment: .top
             )
             sectionHeader.pinToVisibleBounds = true
-            
-            let section: NSCollectionLayoutSection
-            
-            if layoutEnvironment.traitCollection.userInterfaceIdiom == .pad {
-                section =  NSCollectionLayoutSection(
-                    group: .horizontal(
-                        layoutSize: NSCollectionLayoutSize(
-                            widthDimension: .fractionalWidth(1.0),
-                            heightDimension: .estimated(
-                                max(
-                                    layoutEnvironment.container.effectiveContentSize.width / 4.0,
-                                    layoutEnvironment.container.effectiveContentSize.height / 4.0
-                                )
-                            )
-                        ),
-                        subitems: [
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.25),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            ),
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.25),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            ),
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.25),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            ),
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.25),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            )
-                        ]
-                    )
-                )
-            } else {
-                section =  NSCollectionLayoutSection(
-                    group: .horizontal(
-                        layoutSize: NSCollectionLayoutSize(
-                            widthDimension: .fractionalWidth(1.0),
-                            heightDimension: .estimated(
-                                max(
-                                    layoutEnvironment.container.effectiveContentSize.width / 2.0,
-                                    layoutEnvironment.container.effectiveContentSize.height / 4.0
-                                )
-                            )
-                        ),
-                        subitems: [
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.5),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            ),
-                            NSCollectionLayoutItem(
-                                layoutSize: NSCollectionLayoutSize(
-                                    widthDimension: .fractionalWidth(0.5),
-                                    heightDimension: .fractionalHeight(1.0)
-                                )
-                            )
-                        ]
-                    )
-                )
-            }
             
             section.boundarySupplementaryItems = [
                 sectionHeader

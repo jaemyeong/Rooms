@@ -2,6 +2,9 @@ import UIKit
 
 import os
 
+import Firebase
+import ErrorKit
+
 public final class MainViewController: UIViewController {
     private var contentView: MainView {
         self.view as! MainView
@@ -23,6 +26,10 @@ public final class MainViewController: UIViewController {
         
         let dataSource = UICollectionViewDiffableDataSource<Store, Product>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: type(of: itemIdentifier)), for: indexPath)
+            
+            if let cell = cell as? ProductCollectionViewCell {
+                cell.textLabel.text = itemIdentifier.name
+            }
             
             return cell
         }

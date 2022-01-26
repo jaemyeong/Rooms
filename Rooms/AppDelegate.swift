@@ -2,6 +2,8 @@ import UIKit
 
 import Pretendard
 
+import Firebase
+
 public final class AppDelegate: UIResponder {}
 
 @main
@@ -12,6 +14,8 @@ extension AppDelegate: UIApplicationDelegate {
         } catch {
             fatalError(String(describing: error))
         }
+        
+        FirebaseApp.configure()
         
         return true
     }
