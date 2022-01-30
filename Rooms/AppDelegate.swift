@@ -2,19 +2,39 @@ import UIKit
 
 import os
 
-import Pretendard
-
 import Firebase
 
-public final class AppDelegate: UIResponder {}
+import Pretendard
+
+import RunOnce
+
+public final class AppDelegate: UIResponder {
+    private var pretendardOnceToken: RunOnceToken
+    
+    public override init() {
+        self.pretendardOnceToken = RunOnceToken()
+        
+        super.init()
+    }
+}
 
 @main
 extension AppDelegate: UIApplicationDelegate {
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        do {
-            try Pretendard.registerFonts()
-        } catch {
-            fatalError(String(describing: error))
+        self.pretendardOnceToken {
+            do {
+                try Pretendard.registerFonts()
+            } catch {
+                fatalError(String(describing: error))
+            }
+        }
+        
+        self.pretendardOnceToken {
+            do {
+                try Pretendard.registerFonts()
+            } catch {
+                fatalError(String(describing: error))
+            }
         }
         
         FirebaseApp.configure()

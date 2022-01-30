@@ -21,12 +21,20 @@ public final class ProductCollectionViewCell: UICollectionViewCell {
         self.configure()
         self.configureTextLabel()
         self.configureTextLabelBackgroundView()
+        self.configureSubtitleLabel()
         self.configureViewHierarchies()
         self.configureLayoutConstraints()
     }
     
     public required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.textLabel.text = nil
+        self.subtitleLabel.text = nil
     }
 }
 
@@ -39,11 +47,11 @@ extension ProductCollectionViewCell {
         let textLabel = self.textLabel
         
         do {
-            textLabel.font = try .pretendardFont(ofSize: 14.0, weight: .regular)
+            textLabel.font = try .pretendardFont(ofSize: 16.0, weight: .semibold)
         } catch {
             os_log(.error, "%@", String(describing: error))
             
-            textLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
+            textLabel.font = .systemFont(ofSize: 16.0, weight: .semibold)
         }
         
         textLabel.textColor = .label
@@ -54,7 +62,22 @@ extension ProductCollectionViewCell {
         textLabelBackgroundView.backgroundColor = .secondarySystemBackground
     }
     
+    private func configureSubtitleLabel() {
+        let subtitleLabel = self.subtitleLabel
+        
+        do {
+            subtitleLabel.font = try .pretendardFont(ofSize: 14.0, weight: .thin)
+        } catch {
+            os_log(.error, "%@", String(describing: error))
+            
+            subtitleLabel.font = .systemFont(ofSize: 14.0, weight: .thin)
+        }
+        
+        subtitleLabel.textColor = .secondaryLabel
+    }
+    
     private func configureViewHierarchies() {
+        self.addSubview(self.subtitleLabel)
         self.addSubview(self.textLabelBackgroundView)
         self.addSubview(self.textLabel)
     }
@@ -79,6 +102,15 @@ extension ProductCollectionViewCell {
             textLabelBackgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2.0),
             self.trailingAnchor.constraint(equalTo: textLabelBackgroundView.trailingAnchor, constant: 2.0),
             self.bottomAnchor.constraint(equalTo: textLabelBackgroundView.bottomAnchor)
+        ])
+        
+        let subtitleLabel = self.subtitleLabel
+        
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addConstraints([
+            subtitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 2.0),
+            self.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor, constant: 2.0)
         ])
     }
 }

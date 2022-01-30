@@ -3,6 +3,7 @@ import UIKit
 import os
 
 import Firebase
+
 import ErrorKit
 
 public final class MainViewController: UIViewController {
@@ -29,6 +30,7 @@ public final class MainViewController: UIViewController {
             
             if let cell = cell as? ProductCollectionViewCell {
                 cell.textLabel.text = itemIdentifier.name
+                cell.subtitleLabel.text = .localizedStringWithFormat(NSLocalizedString("최대 %@", comment: ""), itemIdentifier.subtitle)
             }
             
             return cell
@@ -52,6 +54,24 @@ public final class MainViewController: UIViewController {
         }
         
         self.dataSource = dataSource
+        
+        if let refreshControl = self.contentView.collectionView.refreshControl {
+            let refreshAction = UIAction(title: NSLocalizedString("새로고침", comment: ""), image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { action in
+                if #available(iOS 14.0, *) {
+                    if let refreshControl = action.sender as? UIRefreshControl {
+                        Task.detached {
+                            try await Task.sleep(nanoseconds: 1_000_000_000)
+                            
+                            await refreshControl.endRefreshing()
+                        }
+                    }
+                }
+            }
+            
+            if #available(iOS 14.0, *) {
+                refreshControl.addAction(refreshAction, for: .valueChanged)
+            }
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {
