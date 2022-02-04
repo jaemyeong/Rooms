@@ -137,6 +137,15 @@
         }
       },
       {
+        "package": "RunOnce",
+        "repositoryURL": "https://github.com/jaemyeong/RunOnce.git",
+        "state": {
+          "branch": null,
+          "revision": "54f582e75b132acaff8c22f4db0ff985c5d03622",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "SQLite.swift",
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {

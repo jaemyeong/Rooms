@@ -18,6 +18,7 @@
 		7B192E1327A4D6D200B583F2 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */; };
 		7B192E1527A4D6DB00B583F2 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */; };
 		7B3989E62799570F009F823D /* OpenColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B3989E52799570F009F823D /* OpenColorKit */; };
+		7B56157727ACB48700C33F40 /* RunOnce in Frameworks */ = {isa = PBXBuildFile; productRef = 7B56157627ACB48700C33F40 /* RunOnce */; };
 		7B6B174E2799206A00C3C51D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B6B174D2799206A00C3C51D /* Settings.bundle */; };
 		7B92D63B27991A20002A102D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D63D27991A20002A102D /* InfoPlist.strings */; };
 		7B9A6A08279902B1007865E9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6A07279902B1007865E9 /* MainView.swift */; };
@@ -37,8 +38,7 @@
 		7BD9215E279800BA00919BA3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9215D279800BA00919BA3 /* API.swift */; };
 		7BD921602798012B00919BA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9215F2798012B00919BA3 /* Network.swift */; };
 		7BD92163279805CA00919BA3 /* ErrorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD92162279805CA00919BA3 /* ErrorKit */; };
-		7BEE520C27A60B3400C53FEA /* UINavigationBarAppearanceConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE520B27A60B3400C53FEA /* UINavigationBarAppearanceConfigurer.swift */; };
-		7BEE521027A616BF00C53FEA /* RunOnce in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEE520F27A616BF00C53FEA /* RunOnce */; };
+		7BEE520C27A60B3400C53FEA /* UINavigationBarConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */; };
 		7BF6E70C279E9AD70009AF50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6E70B279E9AD70009AF50 /* Product.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,8 +89,7 @@
 		7BD9215C2798007700919BA3 /* GetGroup.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetGroup.graphql; sourceTree = "<group>"; };
 		7BD9215D279800BA00919BA3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7BD9215F2798012B00919BA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		7BEE520B27A60B3400C53FEA /* UINavigationBarAppearanceConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarAppearanceConfigurer.swift; sourceTree = "<group>"; };
-		7BEE520E27A60D4100C53FEA /* RunOnce */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RunOnce; path = Packages/RunOnce; sourceTree = "<group>"; };
+		7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarConfigurer.swift; sourceTree = "<group>"; };
 		7BF6E70B279E9AD70009AF50 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,11 +102,11 @@
 				7B3989E62799570F009F823D /* OpenColorKit in Frameworks */,
 				7B0E284027A1352B0040382C /* FirebaseMessaging in Frameworks */,
 				7B0E283327A11CED0040382C /* FirebaseAnalytics in Frameworks */,
-				7BEE521027A616BF00C53FEA /* RunOnce in Frameworks */,
 				7BD921572797F8B100919BA3 /* Apollo in Frameworks */,
 				7BD921592797F8B100919BA3 /* ApolloWebSocket in Frameworks */,
 				7B040669279FBD89009C62BB /* Pretendard in Frameworks */,
 				7B0E283C27A1306C0040382C /* FirebaseCrashlytics in Frameworks */,
+				7B56157727ACB48700C33F40 /* RunOnce in Frameworks */,
 				7B0E283A27A128630040382C /* FirebasePerformance in Frameworks */,
 				7B0E283827A125A80040382C /* AdSupport.framework in Frameworks */,
 			);
@@ -138,31 +137,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B192E1627A4D6E500B583F2 /* LaunchScreen */ = {
-			isa = PBXGroup;
-			children = (
-				7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */,
-				7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */,
-			);
-			name = LaunchScreen;
-			sourceTree = "<group>";
-		};
-		7B92D63E27991B62002A102D /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				7B9A6A07279902B1007865E9 /* MainView.swift */,
-				7BAC1C372797EEF3003148AA /* MainViewController.swift */,
-			);
-			name = Main;
-			sourceTree = "<group>";
-		};
-		7B92D63F27991B6A002A102D /* UI */ = {
+		7B23FF5C27ACBA1C005EC8BE /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				7B9A6A0927990AFB007865E9 /* ProductCollectionViewCell.swift */,
 				7B04066A279FBDDB009C62BB /* StoreCollectionSupplementaryView.swift */,
 			);
-			name = UI;
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7B23FF5D27ACBA21005EC8BE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A6A07279902B1007865E9 /* MainView.swift */,
+				7BAC1C372797EEF3003148AA /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7B23FF5E27ACBA28005EC8BE /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */,
+				7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		7B9BCC0B279860D300163CB2 /* Resources */ = {
@@ -210,15 +209,15 @@
 				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
 				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
 				7BD9215D279800BA00919BA3 /* API.swift */,
-				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
 				7BD9215F2798012B00919BA3 /* Network.swift */,
+				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
 				7BF6E70B279E9AD70009AF50 /* Product.swift */,
 				7BA19E312798EEFD00C72427 /* Store.swift */,
-				7BEE520B27A60B3400C53FEA /* UINavigationBarAppearanceConfigurer.swift */,
-				7B192E1627A4D6E500B583F2 /* LaunchScreen */,
-				7B92D63E27991B62002A102D /* Main */,
+				7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */,
+				7B23FF5C27ACBA1C005EC8BE /* UI */,
+				7B23FF5E27ACBA28005EC8BE /* LaunchScreen */,
+				7B23FF5D27ACBA21005EC8BE /* Main */,
 				7B9BCC0B279860D300163CB2 /* Resources */,
-				7B92D63F27991B6A002A102D /* UI */,
 			);
 			path = Rooms;
 			sourceTree = "<group>";
@@ -243,7 +242,6 @@
 		7BEE520D27A60D4100C53FEA /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				7BEE520E27A60D4100C53FEA /* RunOnce */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -276,7 +274,7 @@
 				7B0E283927A128630040382C /* FirebasePerformance */,
 				7B0E283B27A1306C0040382C /* FirebaseCrashlytics */,
 				7B0E283F27A1352B0040382C /* FirebaseMessaging */,
-				7BEE520F27A616BF00C53FEA /* RunOnce */,
+				7B56157627ACB48700C33F40 /* RunOnce */,
 			);
 			productName = Rooms;
 			productReference = 7BAC1C302797EEF3003148AA /* Rooms.app */;
@@ -356,6 +354,7 @@
 				7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */,
 				7B040667279FBD89009C62BB /* XCRemoteSwiftPackageReference "Pretendard" */,
 				7B0E283127A11CEC0040382C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7B56157527ACB48600C33F40 /* XCRemoteSwiftPackageReference "RunOnce" */,
 			);
 			productRefGroup = 7BAC1C312797EEF3003148AA /* Products */;
 			projectDirPath = "";
@@ -448,7 +447,7 @@
 				7B9A6A08279902B1007865E9 /* MainView.swift in Sources */,
 				7BAC1C382797EEF3003148AA /* MainViewController.swift in Sources */,
 				7B9A6A0A27990AFB007865E9 /* ProductCollectionViewCell.swift in Sources */,
-				7BEE520C27A60B3400C53FEA /* UINavigationBarAppearanceConfigurer.swift in Sources */,
+				7BEE520C27A60B3400C53FEA /* UINavigationBarConfigurer.swift in Sources */,
 				7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */,
 				7BA19E322798EEFD00C72427 /* Store.swift in Sources */,
 				7BD9215E279800BA00919BA3 /* API.swift in Sources */,
@@ -646,6 +645,7 @@
 				INFOPLIST_FILE = Rooms/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -671,6 +671,7 @@
 				INFOPLIST_FILE = Rooms/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -812,6 +813,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		7B56157527ACB48600C33F40 /* XCRemoteSwiftPackageReference "RunOnce" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/RunOnce.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -861,6 +870,11 @@
 			package = 7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */;
 			productName = OpenColorKit;
 		};
+		7B56157627ACB48700C33F40 /* RunOnce */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B56157527ACB48600C33F40 /* XCRemoteSwiftPackageReference "RunOnce" */;
+			productName = RunOnce;
+		};
 		7BD921562797F8B100919BA3 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */;
@@ -875,10 +889,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7BD92161279805CA00919BA3 /* XCRemoteSwiftPackageReference "ErrorKit" */;
 			productName = ErrorKit;
-		};
-		7BEE520F27A616BF00C53FEA /* RunOnce */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RunOnce;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

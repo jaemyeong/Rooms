@@ -9,6 +9,10 @@ public final class LaunchScreenViewController: UIViewController {
         self.view as! LaunchScreenView
     }
     
+    public override var prefersStatusBarHidden: Bool {
+        true
+    }
+    
     public override func loadView() {
         self.view = LaunchScreenView()
     }
@@ -16,13 +20,11 @@ public final class LaunchScreenViewController: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UINavigationBarAppearanceConfigurer.configure()
-        
         Task.detached {
             await self.contentView.launch()
             
             do {
-                try await Task.sleep(nanoseconds: 5_000_000_000)
+                try await Task.sleep(nanoseconds: 2_500_000_000)
             } catch {
                 os_log(.error, "%@", String(describing: error))
                 
@@ -41,7 +43,8 @@ extension LaunchScreenViewController {
         }
         
         let navigationController = UINavigationController(rootViewController: MainViewController())
-        navigationController.navigationBar.prefersLargeTitles = true
+        
+        UINavigationBarConfigurer(navigationBar: navigationController.navigationBar).configure()
         
         window.rootViewController = navigationController
     }
