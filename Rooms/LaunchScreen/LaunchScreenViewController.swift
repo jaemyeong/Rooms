@@ -4,7 +4,21 @@ import os
 
 import Pretendard
 
+import RunOnce
+
 public final class LaunchScreenViewController: UIViewController {
+    private let launchOnceToken: RunOnceToken
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.launchOnceToken = RunOnceToken()
+        
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
     private var contentView: LaunchScreenView {
         self.view as! LaunchScreenView
     }
@@ -20,7 +34,7 @@ public final class LaunchScreenViewController: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Task.detached {
+        self.launchOnceToken {
             await self.contentView.launch()
             
             do {

@@ -188,7 +188,6 @@
 				7BAC1C492797EEF4003148AA /* RoomsTests */,
 				7BAC1C532797EEF4003148AA /* RoomsUITests */,
 				7BAC1C312797EEF3003148AA /* Products */,
-				7BEE520D27A60D4100C53FEA /* Packages */,
 				7B0E283627A125A80040382C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -237,13 +236,6 @@
 				7BAC1C562797EEF4003148AA /* RoomsUITestsLaunchTests.swift */,
 			);
 			path = RoomsUITests;
-			sourceTree = "<group>";
-		};
-		7BEE520D27A60D4100C53FEA /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
