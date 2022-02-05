@@ -162,6 +162,15 @@
           "revision": "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
           "version": "1.18.0"
         }
+      },
+      {
+        "package": "ULID.swift",
+        "repositoryURL": "https://github.com/yaslab/ULID.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "05ce7a7b7dfaff3da5d7c239e5f563fb162909c9",
+          "version": "1.1.0"
+        }
       }
     ]
   },

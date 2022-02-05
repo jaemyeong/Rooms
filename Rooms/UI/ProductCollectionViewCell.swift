@@ -38,6 +38,7 @@ public final class ProductCollectionViewCell: UICollectionViewCell {
         
         self.textLabel.text = nil
         self.subtitleLabel.text = nil
+        self.slideShowView.images = nil
     }
 }
 

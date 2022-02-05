@@ -3,11 +3,20 @@ import UIKit
 import os
 
 public final class MainViewController: UIViewController {
+    private var dataSource: UICollectionViewDiffableDataSource<Store, Product>?
+    
+    private var reloadDataTask: Task<Void, Never>? {
+        willSet {
+            guard let reloadDataTask = self.reloadDataTask else {
+                return
+            }
+            reloadDataTask.cancel()
+        }
+    }
+    
     private var contentView: MainView {
         self.view as! MainView
     }
-    
-    private var dataSource: UICollectionViewDiffableDataSource<Store, Product>?
     
     public override func loadView() {
         self.view = MainView()
@@ -18,7 +27,7 @@ public final class MainViewController: UIViewController {
         
         self.navigationItem.title = NSLocalizedString("#회의실", comment: "")
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: nil, action: nil)
+            UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"), style: .plain, target: self, action: #selector(Self.profileButtonTapped(_:)))
         ]
         
         let dataSource = UICollectionViewDiffableDataSource<Store, Product>(collectionView: self.contentView.collectionView) { collectionView, indexPath, itemIdentifier in
@@ -55,10 +64,10 @@ public final class MainViewController: UIViewController {
             if #available(iOS 14.0, *) {
                 let refreshAction = UIAction { action in
                     if let refreshControl = action.sender as? UIRefreshControl {
-                        Task.detached {
-                            try await Task.sleep(nanoseconds: 1_000_000_000)
+                        self.reloadDataTask = Task {
+                            await self.reloadData()
                             
-                            await refreshControl.endRefreshing()
+                            refreshControl.endRefreshing()
                         }
                     }
                 }
@@ -73,30 +82,38 @@ public final class MainViewController: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Task.detached {
-            guard let groupCode = UserDefaults.standard.string(forKey: "GroupCode") else {
-                return
-            }
-            
-            let action = GetStoreList(groupCode: groupCode)
-            
-            let items: [Store]
-            
-            do {
-                items = try await action()
-            } catch {
-                os_log(.error, "%@", String(describing: error))
-                
-                return
-            }
-            
-            await self.reloadData(items: items)
+        self.reloadDataTask = Task {
+            await self.reloadData()
         }
     }
 }
 
 extension MainViewController {
-    private func reloadData(items: [Store]) {
+    private func reloadData() async {
+        guard let groupCode = UserDefaults.standard.string(forKey: "GroupCode") else {
+            return
+        }
+        
+        let action = GetStoreList(groupCode: groupCode)
+        
+        let items: [Store]
+        
+        do {
+            items = try await action()
+        } catch {
+            os_log(.error, "%@", String(describing: error))
+            
+            return
+        }
+        
+        if Task.isCancelled {
+            return
+        }
+        
+        self.apply(items: items)
+    }
+    
+    private func apply(items: [Store]) {
         var snapshot = NSDiffableDataSourceSnapshot<Store, Product>()
         
         items.forEach { item in
@@ -107,6 +124,7 @@ extension MainViewController {
         guard let dataSource = self.dataSource else {
             return
         }
+        
         dataSource.apply(snapshot, animatingDifferences: dataSource.snapshot().numberOfSections != 0)
     }
 }
@@ -114,10 +132,23 @@ extension MainViewController {
 extension MainViewController {
     @objc
     private func handleRefreshControl(_ sender: UIRefreshControl) {
-        Task.detached {
-            try await Task.sleep(nanoseconds: 1_000_000_000)
+        self.reloadDataTask = Task {
+            await self.reloadData()
             
-            await sender.endRefreshing()
+            sender.endRefreshing()
         }
+    }
+    
+    @objc
+    private func profileButtonTapped(_ sender: UIBarButtonItem) {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        
+        guard UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+        
+        UIApplication.shared.open(url)
     }
 }

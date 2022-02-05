@@ -37,12 +37,12 @@ public final class LaunchScreenViewController: UIViewController {
         self.launchOnceToken {
             await self.contentView.launch()
             
+            async let granted = UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+            
             do {
-                try await Task.sleep(nanoseconds: 2_500_000_000)
+                os_log(.info, "Granted %@", String(describing: try await granted))
             } catch {
                 os_log(.error, "%@", String(describing: error))
-                
-                return
             }
             
             await self.presentMain()

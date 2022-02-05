@@ -27,9 +27,9 @@ extension AppDelegate: UIApplicationDelegate {
         
         self.userNotificationCenterConfigure()
         
-        self.applicationRemoteNotificationsConfigure(application: application)
-        
         self.userDefaultsConfigure()
+        
+        self.applicationRemoteNotificationsConfigure(application: application)
         
         os_log(.debug, "%@", String(describing: UserDefaults.standard.dictionaryRepresentation()))
         
