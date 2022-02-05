@@ -4,59 +4,40 @@ import os
 
 import Firebase
 
-import Pretendard
-
-import RunOnce
-
 public final class AppDelegate: UIResponder {
-    private let pretendardOnceToken: RunOnceToken
+    private lazy var pretendardConfigure: PretendardConfigurer = PretendardConfigurer()
     
-    public override init() {
-        self.pretendardOnceToken = RunOnceToken()
-        
-        super.init()
-    }
+    private lazy var pretendardUnconfigure: PretendardUnconfigurer = PretendardUnconfigurer()
+    
+    private lazy var firebaseConfigure: FirebaseConfigurer = FirebaseConfigurer(messagingDelegate: self)
+    
+    private lazy var userNotificationCenterConfigure: UNUserNotificationCenterConfigurer = UNUserNotificationCenterConfigurer(delegate: self)
+    
+    private lazy var applicationRemoteNotificationsConfigure: UIApplicationRemoteNotificationsConfigurer = UIApplicationRemoteNotificationsConfigurer()
+    
+    private lazy var userDefaultsConfigure: UserDefaultsConfigurer = UserDefaultsConfigurer()
 }
 
 @main
 extension AppDelegate: UIApplicationDelegate {
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        self.pretendardOnceToken {
-            do {
-                try Pretendard.registerFonts()
-            } catch {
-                fatalError(String(describing: error))
-            }
-        }
+        self.pretendardConfigure()
         
-        FirebaseApp.configure()
+        self.firebaseConfigure()
         
-        Messaging.messaging().delegate = self
+        self.userNotificationCenterConfigure()
         
-        Task.detached {
-            let userNotificationCenter = UNUserNotificationCenter.current()
-            userNotificationCenter.delegate = self
-            
-            do {
-                try await userNotificationCenter.requestAuthorization(options: [.alert, .sound])
-            } catch {
-                os_log(.error, "%@", String(describing: error))
-                
-                return
-            }
-        }
+        self.applicationRemoteNotificationsConfigure(application: application)
         
-        application.registerForRemoteNotifications()
+        self.userDefaultsConfigure()
+        
+        os_log(.debug, "%@", String(describing: UserDefaults.standard.dictionaryRepresentation()))
         
         return true
     }
     
     public func applicationWillTerminate(_ application: UIApplication) {
-        do {
-            try Pretendard.unregisterFonts()
-        } catch {
-            fatalError(String(describing: error))
-        }
+        self.pretendardUnconfigure()
     }
     
     public func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

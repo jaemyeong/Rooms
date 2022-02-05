@@ -2,10 +2,6 @@ import UIKit
 
 import os
 
-import Firebase
-
-import ErrorKit
-
 public final class MainViewController: UIViewController {
     private var contentView: MainView {
         self.view as! MainView
@@ -56,8 +52,8 @@ public final class MainViewController: UIViewController {
         self.dataSource = dataSource
         
         if let refreshControl = self.contentView.collectionView.refreshControl {
-            let refreshAction = UIAction(title: NSLocalizedString("새로고침", comment: ""), image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { action in
-                if #available(iOS 14.0, *) {
+            if #available(iOS 14.0, *) {
+                let refreshAction = UIAction { action in
                     if let refreshControl = action.sender as? UIRefreshControl {
                         Task.detached {
                             try await Task.sleep(nanoseconds: 1_000_000_000)
@@ -66,10 +62,10 @@ public final class MainViewController: UIViewController {
                         }
                     }
                 }
-            }
-            
-            if #available(iOS 14.0, *) {
+                
                 refreshControl.addAction(refreshAction, for: .valueChanged)
+            } else {
+                refreshControl.addTarget(self, action: #selector(Self.handleRefreshControl(_:)), for: .valueChanged)
             }
         }
     }
@@ -78,7 +74,11 @@ public final class MainViewController: UIViewController {
         super.viewDidAppear(animated)
         
         Task.detached {
-            let action = GetStoreList(groupCode: "FVFWKW")
+            guard let groupCode = UserDefaults.standard.string(forKey: "GroupCode") else {
+                return
+            }
+            
+            let action = GetStoreList(groupCode: groupCode)
             
             let items: [Store]
             
@@ -108,5 +108,16 @@ extension MainViewController {
             return
         }
         dataSource.apply(snapshot, animatingDifferences: dataSource.snapshot().numberOfSections != 0)
+    }
+}
+
+extension MainViewController {
+    @objc
+    private func handleRefreshControl(_ sender: UIRefreshControl) {
+        Task.detached {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            await sender.endRefreshing()
+        }
     }
 }

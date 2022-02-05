@@ -9,12 +9,15 @@ public final class ProductCollectionViewCell: UICollectionViewCell {
     
     public let subtitleLabel: UILabel
     
+    public let slideShowView: SlideShowView
+    
     private let textLabelBackgroundView: UIView
     
     public override init(frame: CGRect) {
         self.textLabel = UILabel()
         self.textLabelBackgroundView = UIView()
         self.subtitleLabel = UILabel()
+        self.slideShowView = SlideShowView()
         
         super.init(frame: frame)
         
@@ -77,9 +80,10 @@ extension ProductCollectionViewCell {
     }
     
     private func configureViewHierarchies() {
-        self.addSubview(self.subtitleLabel)
-        self.addSubview(self.textLabelBackgroundView)
         self.addSubview(self.textLabel)
+        self.insertSubview(self.textLabelBackgroundView, belowSubview: self.textLabel)
+        self.addSubview(self.subtitleLabel)
+        self.insertSubview(self.slideShowView, belowSubview: self.subtitleLabel)
     }
     
     private func configureLayoutConstraints() {
@@ -111,6 +115,17 @@ extension ProductCollectionViewCell {
         self.addConstraints([
             subtitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 2.0),
             self.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor, constant: 2.0)
+        ])
+        
+        let slideShowView = self.slideShowView
+        
+        slideShowView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addConstraints([
+            slideShowView.topAnchor.constraint(equalTo: self.topAnchor),
+            slideShowView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: slideShowView.trailingAnchor),
+            textLabelBackgroundView.topAnchor.constraint(equalTo: slideShowView.bottomAnchor)
         ])
     }
 }
