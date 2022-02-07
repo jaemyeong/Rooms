@@ -29,7 +29,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         self.userDefaultsConfigure()
         
-        self.applicationRemoteNotificationsConfigure(application: application)
+        self.applicationRemoteNotificationsConfigure()
         
         os_log(.debug, "%@", String(describing: UserDefaults.standard.dictionaryRepresentation()))
         

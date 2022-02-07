@@ -4,6 +4,8 @@ import os
 
 import Pretendard
 
+import SlideShowView
+
 public final class ProductCollectionViewCell: UICollectionViewCell {
     public let textLabel: UILabel
     

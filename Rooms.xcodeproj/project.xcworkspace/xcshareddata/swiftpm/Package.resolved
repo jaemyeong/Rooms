@@ -146,6 +146,15 @@
         }
       },
       {
+        "package": "SlideShowView",
+        "repositoryURL": "https://github.com/jaemyeong/SlideShowView.git",
+        "state": {
+          "branch": null,
+          "revision": "c2db03c802fe69ba90749802794c8c46590dec9c",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "SQLite.swift",
         "repositoryURL": "https://github.com/stephencelis/SQLite.swift.git",
         "state": {
@@ -168,8 +177,8 @@
         "repositoryURL": "https://github.com/yaslab/ULID.swift.git",
         "state": {
           "branch": null,
-          "revision": "05ce7a7b7dfaff3da5d7c239e5f563fb162909c9",
-          "version": "1.1.0"
+          "revision": "309acd503a35fc95650bf45d23cca2a3e24bad19",
+          "version": "1.2.0"
         }
       }
     ]

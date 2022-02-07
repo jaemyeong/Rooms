@@ -34,7 +34,11 @@ public final class SlideShowView: UIView {
                 
                 self.scrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
                 
-                index += 1
+                if index + 1 == images.count {
+                    index = 0
+                } else {
+                    index += 1
+                }
             }
         }
     }
