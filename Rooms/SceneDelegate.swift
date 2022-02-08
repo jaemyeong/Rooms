@@ -3,31 +3,32 @@ import UIKit
 import ErrorKit
 
 public final class SceneDelegate: UIResponder {
-    private var internalWindow: UIWindow?
+    private var contentView: UIWindow?
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
     public var window: UIWindow? {
         get {
-            self.internalWindow
+            self.contentView
         }
         set {
-            self.internalWindow = newValue
+            self.contentView = newValue
         }
     }
     
     public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = scene as? UIWindowScene else {
-            fatalError(String(describing: TypeCastingError()))
-        }
+        let coordinator: SceneCoordinator
         
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = LaunchScreenViewController()
+        do {
+            coordinator = try SceneCoordinator(scene: scene)
+        } catch {
+            fatalError(String(describing: error))
+        }
         
         defer {
-            window.makeKeyAndVisible()
+            coordinator.connect()
         }
         
-        self.window = window
+        self.window = coordinator.window
     }
 }

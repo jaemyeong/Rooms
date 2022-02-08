@@ -1,11 +1,7 @@
 import UIKit
 
-public struct UIApplicationRemoteNotificationsConfigurer {
-    public func configure() {
+public enum UIApplicationRemoteNotificationsConfigurer {
+    public static func configure() {
         UIApplication.shared.registerForRemoteNotifications()
-    }
-    
-    public func callAsFunction() {
-        self.configure()
     }
 }

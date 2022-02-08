@@ -1,13 +1,8 @@
 import Foundation
 
-public struct UserDefaultsConfigurer {
-    public func configure() {
+public enum UserDefaultsConfigurer {
+    public static func configure() {
         UserDefaults.standard.register(defaults: [
             "GroupCode": "FVFWKW"
         ])
-    }
-    
-    public func callAsFunction() {
-        self.configure()
-    }
-}
+    }}
