@@ -16,9 +16,9 @@
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>Group</string>
+			<string>Group Code</string>
 			<key>Key</key>
-			<string>Group</string>
+			<string>GroupCode</string>
 			<key>DefaultValue</key>
 			<string>FVFWKW</string>
 		</dict>

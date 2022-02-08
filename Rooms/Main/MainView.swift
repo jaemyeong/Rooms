@@ -7,31 +7,41 @@ public final class MainView: UIView {
     
     public override init(frame: CGRect) {
         let collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let section =  NSCollectionLayoutSection(
-                group: .vertical(
+            let numberOfColumns = layoutEnvironment.traitCollection.horizontalSizeClass == .regular ? 3 : 2
+            
+            let section = NSCollectionLayoutSection(
+                group: .horizontal(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1.0),
-                        heightDimension: .absolute(44.0)
-                    ),
-                    subitems: [
-                        NSCollectionLayoutItem(
-                            layoutSize: NSCollectionLayoutSize(
-                                widthDimension: .fractionalWidth(0.5),
-                                heightDimension: .fractionalHeight(1.0)
+                        heightDimension: .estimated(
+                            max(
+                                layoutEnvironment.container.effectiveContentSize.width / CGFloat(numberOfColumns),
+                                layoutEnvironment.container.effectiveContentSize.height / 4.0
                             )
                         )
-                    ]
+                    ),
+                    subitem: NSCollectionLayoutItem(
+                        layoutSize: NSCollectionLayoutSize(
+                            widthDimension: .fractionalWidth(1.0 / CGFloat(numberOfColumns)),
+                            heightDimension: .fractionalHeight(1.0)
+                        )
+                    ),
+                    count: numberOfColumns
                 )
             )
+            
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(44.0)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+            sectionHeader.pinToVisibleBounds = true
+            
             section.boundarySupplementaryItems = [
-                NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: NSCollectionLayoutSize(
-                        widthDimension: .fractionalWidth(1.0),
-                        heightDimension: .absolute(44.0)
-                    ),
-                    elementKind: UICollectionView.elementKindSectionHeader,
-                    alignment: .top
-                )
+                sectionHeader
             ]
             
             return section
@@ -61,8 +71,9 @@ extension MainView {
         let refreshControl = UIRefreshControl()
         
         let collectionView = self.collectionView
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: Product.self))
-        collectionView.register(StoreCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
+        collectionView.register(StoreCollectionSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: Store.self))
         collectionView.refreshControl = refreshControl
     }
     
