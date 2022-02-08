@@ -3,19 +3,10 @@ import UIKit
 import ErrorKit
 
 public final class SceneDelegate: UIResponder {
-    private var contentView: UIWindow?
+    public var window: UIWindow?
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
-    public var window: UIWindow? {
-        get {
-            self.contentView
-        }
-        set {
-            self.contentView = newValue
-        }
-    }
-    
     public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let coordinator: SceneCoordinator
         

@@ -4,9 +4,7 @@ import os
 
 public final class AppCoordinator {
     public static let shared: AppCoordinator = AppCoordinator()
-}
-
-extension AppCoordinator: AppDelegateAdaptor {
+    
     public func launch() -> Bool {
         AppConfigurer.configure()
         
@@ -19,7 +17,11 @@ extension AppCoordinator: AppDelegateAdaptor {
         AppUnconfigurer.unconfigure()
     }
     
-    public func connectScene(sceneSession: UISceneSession) -> UISceneConfiguration {
+    public func connectingSceneSession(sceneSession: UISceneSession) -> UISceneConfiguration {
         UISceneConfiguration(name: "Default Configuration", sessionRole: sceneSession.role)
+    }
+    
+    public func discardSceneSessions(sceneSessions: Set<UISceneSession>) {
+        
     }
 }

@@ -2,33 +2,23 @@ import UIKit
 
 import ErrorKit
 
-public final class AppDelegate: UIResponder {
-    private weak var delegate: AppDelegateAdaptor? = AppCoordinator.shared
-}
+public final class AppDelegate: UIResponder {}
 
 @main
 extension AppDelegate: UIApplicationDelegate {
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        guard let delegate = self.delegate else {
-            fatalError(String(describing: NilError()))
-        }
-        
-        return delegate.launch()
+        AppCoordinator.shared.launch()
     }
     
     public func applicationWillTerminate(_ application: UIApplication) {
-        guard let delegate = self.delegate else {
-            fatalError(String(describing: NilError()))
-        }
-        
-        delegate.terminate()
+        AppCoordinator.shared.terminate()
     }
     
     public func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        guard let delegate = self.delegate else {
-            fatalError(String(describing: NilError()))
-        }
-        
-        return delegate.connectScene(sceneSession: connectingSceneSession)
+        AppCoordinator.shared.connectingSceneSession(sceneSession: connectingSceneSession)
+    }
+    
+    public func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        AppCoordinator.shared.discardSceneSessions(sceneSessions: sceneSessions)
     }
 }

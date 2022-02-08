@@ -6,6 +6,8 @@ import Pretendard
 
 import RunOnce
 
+import ErrorKit
+
 public final class LaunchScreenViewController: UIViewController {
     private let launchOnceToken: RunOnceToken
     
@@ -16,7 +18,7 @@ public final class LaunchScreenViewController: UIViewController {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
     
     private var contentView: LaunchScreenView {

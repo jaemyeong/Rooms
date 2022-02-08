@@ -4,6 +4,8 @@ import os
 
 import Pretendard
 
+import ErrorKit
+
 public final class StoreCollectionSupplementaryView: UICollectionReusableView {
     public let textLabel: UILabel
     
@@ -19,7 +21,7 @@ public final class StoreCollectionSupplementaryView: UICollectionReusableView {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
 }
 
