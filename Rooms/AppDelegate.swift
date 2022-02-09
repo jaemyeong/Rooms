@@ -1,7 +1,5 @@
 import UIKit
 
-import ErrorKit
-
 public final class AppDelegate: UIResponder {}
 
 @main

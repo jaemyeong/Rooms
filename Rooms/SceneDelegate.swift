@@ -4,22 +4,38 @@ import ErrorKit
 
 public final class SceneDelegate: UIResponder {
     public var window: UIWindow?
+    
+    public weak var delegateAdaptor: SceneDelegateAdaptor?
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
     public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let coordinator: SceneCoordinator
+        let (window, delegateAdaptor) = AppCoordinator.shared.connectScene(scene: scene)
         
-        do {
-            coordinator = try SceneCoordinator(scene: scene)
-        } catch {
-            fatalError(String(describing: error))
-        }
+        self.window = window
         
-        defer {
-            coordinator.connect()
-        }
+        self.delegateAdaptor = delegateAdaptor
         
-        self.window = coordinator.window
+        window.makeKeyAndVisible()
+    }
+    
+    public func sceneDidDisconnect(_ scene: UIScene) {
+        AppCoordinator.shared.disconnectScene(scene: scene)
+    }
+    
+    public func sceneDidBecomeActive(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneDidBecomeActive(scene)
+    }
+    
+    public func sceneWillResignActive(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneWillResignActive(scene)
+    }
+    
+    public func sceneWillEnterForeground(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneWillEnterForeground(scene)
+    }
+    
+    public func sceneDidEnterBackground(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneDidEnterBackground(scene)
     }
 }

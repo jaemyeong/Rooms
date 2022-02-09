@@ -32,6 +32,10 @@
 		7B5F8F1927AF235100ED711D /* LaunchScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F8F1827AF235100ED711D /* LaunchScreenCoordinator.swift */; };
 		7B6B174E2799206A00C3C51D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B6B174D2799206A00C3C51D /* Settings.bundle */; };
 		7B92D63B27991A20002A102D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D63D27991A20002A102D /* InfoPlist.strings */; };
+		7B9461D627B352B9007B78DF /* SceneDelegateAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9461D527B352B9007B78DF /* SceneDelegateAdaptor.swift */; };
+		7B9461DA27B36229007B78DF /* SceneCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9461D927B36229007B78DF /* SceneCoordinatorDelegate.swift */; };
+		7B9461DD27B382F4007B78DF /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9461DC27B382F4007B78DF /* EmptyViewController.swift */; };
+		7B9461DF27B3831F007B78DF /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9461DE27B3831F007B78DF /* EmptyView.swift */; };
 		7B9A565E27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A565D27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift */; };
 		7B9A566027B234700031273C /* MessagingDelegateAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A565F27B234700031273C /* MessagingDelegateAdaptor.swift */; };
 		7B9A566227B256E40031273C /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A566127B256E40031273C /* SceneCoordinator.swift */; };
@@ -95,6 +99,10 @@
 		7B5F8F1827AF235100ED711D /* LaunchScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenCoordinator.swift; sourceTree = "<group>"; };
 		7B6B174D2799206A00C3C51D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7B92D63C27991A20002A102D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B9461D527B352B9007B78DF /* SceneDelegateAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateAdaptor.swift; sourceTree = "<group>"; };
+		7B9461D927B36229007B78DF /* SceneCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		7B9461DC27B382F4007B78DF /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		7B9461DE27B3831F007B78DF /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		7B9A565D27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenterDelegateAdaptor.swift; sourceTree = "<group>"; };
 		7B9A565F27B234700031273C /* MessagingDelegateAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDelegateAdaptor.swift; sourceTree = "<group>"; };
 		7B9A566127B256E40031273C /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -202,6 +210,33 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		7B9461DB27B3829D007B78DF /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A566327B25B730031273C /* Configurer.swift */,
+				7B9A566527B25B830031273C /* Unconfigurer.swift */,
+				7B9A566727B25BA30031273C /* AppConfigurer.swift */,
+				7B9A566927B25BB30031273C /* AppUnconfigurer.swift */,
+				7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */,
+				7B2A659027AEE5B400426E05 /* UNUserNotificationCenterConfigurer.swift */,
+				7B2A659627AEEB9300426E05 /* UIApplicationRemoteNotificationsConfigurer.swift */,
+				7B2A659827AEF3AD00426E05 /* UserDefaultsConfigurer.swift */,
+				7B2A658E27AEDF7400426E05 /* FirebaseConfigurer.swift */,
+				7B2A659227AEE87000426E05 /* PretendardConfigurer.swift */,
+				7B2A659427AEEA7B00426E05 /* PretendardUnconfigurer.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		7B9461E027B38357007B78DF /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				7B9461DE27B3831F007B78DF /* EmptyView.swift */,
+				7B9461DC27B382F4007B78DF /* EmptyViewController.swift */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		7B9BCC0B279860D300163CB2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,25 +281,18 @@
 				7BAC1C332797EEF3003148AA /* AppDelegate.swift */,
 				7B45553527B0DAF100327C1C /* AppCoordinator.swift */,
 				7BAC1C352797EEF3003148AA /* SceneDelegate.swift */,
+				7B9461D527B352B9007B78DF /* SceneDelegateAdaptor.swift */,
 				7B9A566127B256E40031273C /* SceneCoordinator.swift */,
-				7B9A565F27B234700031273C /* MessagingDelegateAdaptor.swift */,
-				7B9A565D27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift */,
+				7B9461D927B36229007B78DF /* SceneCoordinatorDelegate.swift */,
 				7BD9215D279800BA00919BA3 /* API.swift */,
 				7BD9215F2798012B00919BA3 /* Network.swift */,
 				7BA19E332798EFD200C72427 /* GetStoreList.swift */,
 				7BF6E70B279E9AD70009AF50 /* Product.swift */,
 				7BA19E312798EEFD00C72427 /* Store.swift */,
-				7B9A566327B25B730031273C /* Configurer.swift */,
-				7B9A566527B25B830031273C /* Unconfigurer.swift */,
-				7B9A566727B25BA30031273C /* AppConfigurer.swift */,
-				7B9A566927B25BB30031273C /* AppUnconfigurer.swift */,
-				7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */,
-				7B2A659027AEE5B400426E05 /* UNUserNotificationCenterConfigurer.swift */,
-				7B2A659627AEEB9300426E05 /* UIApplicationRemoteNotificationsConfigurer.swift */,
-				7B2A659827AEF3AD00426E05 /* UserDefaultsConfigurer.swift */,
-				7B2A658E27AEDF7400426E05 /* FirebaseConfigurer.swift */,
-				7B2A659227AEE87000426E05 /* PretendardConfigurer.swift */,
-				7B2A659427AEEA7B00426E05 /* PretendardUnconfigurer.swift */,
+				7B9A565F27B234700031273C /* MessagingDelegateAdaptor.swift */,
+				7B9A565D27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift */,
+				7B9461E027B38357007B78DF /* Empty */,
+				7B9461DB27B3829D007B78DF /* Configuration */,
 				7B23FF5C27ACBA1C005EC8BE /* UI */,
 				7B23FF5E27ACBA28005EC8BE /* LaunchScreen */,
 				7B23FF5D27ACBA21005EC8BE /* Main */,
@@ -496,6 +524,7 @@
 				7B9A566227B256E40031273C /* SceneCoordinator.swift in Sources */,
 				7B9A566427B25B730031273C /* Configurer.swift in Sources */,
 				7B9A565E27B2344C0031273C /* UserNotificationCenterDelegateAdaptor.swift in Sources */,
+				7B9461DA27B36229007B78DF /* SceneCoordinatorDelegate.swift in Sources */,
 				7B192E1527A4D6DB00B583F2 /* LaunchScreenView.swift in Sources */,
 				7B5F8F1727AF234500ED711D /* LaunchScreenViewModel.swift in Sources */,
 				7B9A6A08279902B1007865E9 /* MainView.swift in Sources */,
@@ -504,6 +533,7 @@
 				7B2A659127AEE5B400426E05 /* UNUserNotificationCenterConfigurer.swift in Sources */,
 				7BEE520C27A60B3400C53FEA /* UINavigationBarConfigurer.swift in Sources */,
 				7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */,
+				7B9461DD27B382F4007B78DF /* EmptyViewController.swift in Sources */,
 				7B9A566027B234700031273C /* MessagingDelegateAdaptor.swift in Sources */,
 				7BA19E322798EEFD00C72427 /* Store.swift in Sources */,
 				7B2A658F27AEDF7400426E05 /* FirebaseConfigurer.swift in Sources */,
@@ -512,11 +542,13 @@
 				7B2A659927AEF3AD00426E05 /* UserDefaultsConfigurer.swift in Sources */,
 				7B5F8F1927AF235100ED711D /* LaunchScreenCoordinator.swift in Sources */,
 				7B04066B279FBDDB009C62BB /* StoreCollectionSupplementaryView.swift in Sources */,
+				7B9461DF27B3831F007B78DF /* EmptyView.swift in Sources */,
 				7BF6E70C279E9AD70009AF50 /* Product.swift in Sources */,
 				7B9A566827B25BA30031273C /* AppConfigurer.swift in Sources */,
 				7BAC1C362797EEF3003148AA /* SceneDelegate.swift in Sources */,
 				7B2A659327AEE87000426E05 /* PretendardConfigurer.swift in Sources */,
 				7B192E1327A4D6D200B583F2 /* LaunchScreenViewController.swift in Sources */,
+				7B9461D627B352B9007B78DF /* SceneDelegateAdaptor.swift in Sources */,
 				7B2A659527AEEA7B00426E05 /* PretendardUnconfigurer.swift in Sources */,
 				7B9A566627B25B830031273C /* Unconfigurer.swift in Sources */,
 				7BA19E342798EFD200C72427 /* GetStoreList.swift in Sources */,
