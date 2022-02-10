@@ -18,7 +18,7 @@ public final class SceneCoordinator {
     private func presentEmpty(restorationIdentifier: AnyHashable) {
         self.children.updateValue(self.window.rootViewController as Any, forKey: restorationIdentifier)
         
-        self.window.rootViewController = EmptyViewController()
+        self.window.rootViewController = SecurityViewController()
     }
 }
 

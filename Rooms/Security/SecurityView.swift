@@ -2,11 +2,11 @@ import UIKit
 
 import ErrorKit
 
-public final class EmptyView: UIView {
+public final class SecurityView: UIView {
     private let imageView: UIImageView
     
     public override init(frame: CGRect) {
-        self.imageView = UIImageView(image: UIImage(systemName: "lock.shield", withConfiguration: UIImage.SymbolConfiguration(scale: .large)))
+        self.imageView = UIImageView()
         
         super.init(frame: frame)
         
@@ -21,7 +21,7 @@ public final class EmptyView: UIView {
     }
 }
 
-extension EmptyView {
+extension SecurityView {
     private func configure() {
         self.backgroundColor = .systemBackground
     }
@@ -29,6 +29,8 @@ extension EmptyView {
     private func confiugreImageView() {
         let imageView = self.imageView
         imageView.tintColor = .label
+        imageView.image = UIImage(systemName: "lock.shield")
+        imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 100.0, weight: .thin)
     }
     
     private func configureViewHierarchies() {
