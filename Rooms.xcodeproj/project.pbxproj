@@ -89,6 +89,9 @@
 		7B0E283E27A1337F0040382C /* Rooms.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rooms.entitlements; sourceTree = "<group>"; };
 		7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		7B1C329D27B4F3D900937BDA /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		7B1C329E27B4F3D900937BDA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7B1C32A027B4F57F00937BDA /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		7B2A658E27AEDF7400426E05 /* FirebaseConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConfigurer.swift; sourceTree = "<group>"; };
 		7B2A659027AEE5B400426E05 /* UNUserNotificationCenterConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterConfigurer.swift; sourceTree = "<group>"; };
 		7B2A659227AEE87000426E05 /* PretendardConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretendardConfigurer.swift; sourceTree = "<group>"; };
@@ -190,6 +193,14 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		7B1C329F27B4F4CD00937BDA /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				7B1C32A027B4F57F00937BDA /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		7B23FF5C27ACBA1C005EC8BE /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +277,9 @@
 		7BAC1C272797EEF3003148AA = {
 			isa = PBXGroup;
 			children = (
+				7B1C329E27B4F3D900937BDA /* README.md */,
+				7B1C329D27B4F3D900937BDA /* LICENSE */,
+				7B1C329F27B4F4CD00937BDA /* ci_scripts */,
 				7BAC1C322797EEF3003148AA /* Rooms */,
 				7BAC1C492797EEF4003148AA /* RoomsTests */,
 				7BAC1C532797EEF4003148AA /* RoomsUITests */,
