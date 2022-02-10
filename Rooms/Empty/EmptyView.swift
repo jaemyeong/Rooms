@@ -10,7 +10,6 @@ public final class EmptyView: UIView {
         
         super.init(frame: frame)
         
-        
         self.configure()
         self.confiugreImageView()
         self.configureViewHierarchies()

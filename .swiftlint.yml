@@ -1,0 +1,13 @@
+disabled_rules:
+  - trailing_whitespace
+  - force_cast
+  - type_name
+  - unused_closure_parameter
+  - line_length
+
+excluded:
+  - DerivedData
+  - Documentation
+  - node_modules
+  - Packages
+  - Rooms/API.swift
