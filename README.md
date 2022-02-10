@@ -9,5 +9,9 @@
 ## Installation
 
 ```bash
+brew install node@16
+
 brew install swiftlint
+
+npm install
 ```
