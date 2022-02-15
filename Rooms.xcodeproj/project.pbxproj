@@ -943,7 +943,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 8.12.1;
 			};
 		};
 		7B123C8427AF0649003AA879 /* XCRemoteSwiftPackageReference "ULID.swift" */ = {
@@ -951,7 +951,7 @@
 			repositoryURL = "https://github.com/yaslab/ULID.swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.0;
 			};
 		};
 		7B1C329627B4E61700937BDA /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
@@ -959,7 +959,7 @@
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 7.9.0;
 			};
 		};
 		7B3989E42799570F009F823D /* XCRemoteSwiftPackageReference "OpenColorKit" */ = {
@@ -983,7 +983,7 @@
 			repositoryURL = "https://github.com/jaemyeong/RunOnce.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 		7BD921552797F8B100919BA3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
@@ -999,7 +999,7 @@
 			repositoryURL = "https://github.com/jaemyeong/ErrorKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
+				minimumVersion = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
