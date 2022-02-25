@@ -12,7 +12,11 @@ public final class SceneCoordinator {
     }
     
     private func presentLaunchScreen(restorationIdentifier: AnyHashable) {
-        self.window.rootViewController = self.children.removeValue(forKey: restorationIdentifier) as? UIViewController ?? LaunchScreenViewController()
+        let coordinator = LaunchScreenCoordinator(window: self.window)
+        
+        let viewModel = LaunchScreenViewModel(coordinator: coordinator)
+        
+        self.window.rootViewController = self.children.removeValue(forKey: restorationIdentifier) as? UIViewController ?? LaunchScreenViewController(viewModel: viewModel)
     }
     
     private func presentEmpty(restorationIdentifier: AnyHashable) {

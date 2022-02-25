@@ -1,7 +1,5 @@
 import UIKit
 
-import OpenColorKit
-
 import ErrorKit
 
 public final class LaunchScreenView: UIView {
@@ -29,7 +27,7 @@ public final class LaunchScreenView: UIView {
 
 extension LaunchScreenView {
     private func configure() {
-        self.backgroundColor = .openColor.blue.blue6.color
+        self.backgroundColor = .systemBackground
     }
     
     private func confiugreActivityIndicatorView() {

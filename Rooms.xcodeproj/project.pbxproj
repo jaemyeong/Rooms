@@ -16,6 +16,7 @@
 		7B0E283C27A1306C0040382C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7B0E283B27A1306C0040382C /* FirebaseCrashlytics */; };
 		7B0E284027A1352B0040382C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 7B0E283F27A1352B0040382C /* FirebaseMessaging */; };
 		7B123C8627AF0649003AA879 /* ULID in Frameworks */ = {isa = PBXBuildFile; productRef = 7B123C8527AF0649003AA879 /* ULID */; };
+		7B15766E27C68FC700C1F89C /* LaunchScreenCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B15766D27C68FC700C1F89C /* LaunchScreenCoordinatorDelegate.swift */; };
 		7B192E1327A4D6D200B583F2 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */; };
 		7B192E1527A4D6DB00B583F2 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */; };
 		7B1C329827B4E61800937BDA /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 7B1C329727B4E61800937BDA /* Sentry */; };
@@ -62,6 +63,7 @@
 		7BD921602798012B00919BA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9215F2798012B00919BA3 /* Network.swift */; };
 		7BD92163279805CA00919BA3 /* ErrorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD92162279805CA00919BA3 /* ErrorKit */; };
 		7BEE520C27A60B3400C53FEA /* UINavigationBarConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */; };
+		7BF079CC27C67FF200F4448F /* LaunchScreenViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF079CB27C67FF200F4448F /* LaunchScreenViewModelDelegate.swift */; };
 		7BF6E70C279E9AD70009AF50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6E70B279E9AD70009AF50 /* Product.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,7 @@
 		7B0E283427A11D440040382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B0E283727A125A80040382C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		7B0E283E27A1337F0040382C /* Rooms.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rooms.entitlements; sourceTree = "<group>"; };
+		7B15766D27C68FC700C1F89C /* LaunchScreenCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		7B1C329D27B4F3D900937BDA /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 		7BD9215D279800BA00919BA3 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7BD9215F2798012B00919BA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7BEE520B27A60B3400C53FEA /* UINavigationBarConfigurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarConfigurer.swift; sourceTree = "<group>"; };
+		7BF079CB27C67FF200F4448F /* LaunchScreenViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModelDelegate.swift; sourceTree = "<group>"; };
 		7BF6E70B279E9AD70009AF50 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,7 +229,9 @@
 				7B192E1427A4D6DB00B583F2 /* LaunchScreenView.swift */,
 				7B192E1227A4D6D200B583F2 /* LaunchScreenViewController.swift */,
 				7B5F8F1627AF234500ED711D /* LaunchScreenViewModel.swift */,
+				7BF079CB27C67FF200F4448F /* LaunchScreenViewModelDelegate.swift */,
 				7B5F8F1827AF235100ED711D /* LaunchScreenCoordinator.swift */,
+				7B15766D27C68FC700C1F89C /* LaunchScreenCoordinatorDelegate.swift */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -578,8 +584,10 @@
 				7B2A659127AEE5B400426E05 /* UNUserNotificationCenterConfigurer.swift in Sources */,
 				7BEE520C27A60B3400C53FEA /* UINavigationBarConfigurer.swift in Sources */,
 				7BAC1C342797EEF3003148AA /* AppDelegate.swift in Sources */,
+				7BF079CC27C67FF200F4448F /* LaunchScreenViewModelDelegate.swift in Sources */,
 				7B9461DD27B382F4007B78DF /* SecurityViewController.swift in Sources */,
 				7B9A566027B234700031273C /* MessagingDelegateAdaptor.swift in Sources */,
+				7B15766E27C68FC700C1F89C /* LaunchScreenCoordinatorDelegate.swift in Sources */,
 				7BA19E322798EEFD00C72427 /* Store.swift in Sources */,
 				7B2A658F27AEDF7400426E05 /* FirebaseConfigurer.swift in Sources */,
 				7B9A566A27B25BB30031273C /* AppUnconfigurer.swift in Sources */,
