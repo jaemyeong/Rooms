@@ -1,23 +1,9 @@
 import UIKit
 
-import os
-
-import Pretendard
-
-import RunOnce
+import ErrorKit
 
 public final class LaunchScreenViewController: UIViewController {
-    private let launchOnceToken: RunOnceToken
-    
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.launchOnceToken = RunOnceToken()
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    public required init?(coder: NSCoder) {
-        fatalError()
-    }
+    private let viewModel: LaunchScreenViewModel
     
     private var contentView: LaunchScreenView {
         self.view as! LaunchScreenView
@@ -27,6 +13,18 @@ public final class LaunchScreenViewController: UIViewController {
         true
     }
     
+    public init(viewModel: LaunchScreenViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configureViewModel()
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError(String(describing: InstantiateError()))
+    }
+    
     public override func loadView() {
         self.view = LaunchScreenView()
     }
@@ -34,32 +32,14 @@ public final class LaunchScreenViewController: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.launchOnceToken {
-            await self.contentView.launch()
-            
-            async let granted = UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
-            
-            do {
-                os_log(.info, "Granted %@", String(describing: try await granted))
-            } catch {
-                os_log(.error, "%@", String(describing: error))
-            }
-            
-            await self.presentMain()
-        }
+        self.viewModel.onAppear()
     }
 }
 
 extension LaunchScreenViewController {
-    private func presentMain() {
-        guard let window = self.view.window else {
-            return
-        }
-        
-        let navigationController = UINavigationController(rootViewController: MainViewController())
-        
-        UINavigationBarConfigurer(navigationBar: navigationController.navigationBar).configure()
-        
-        window.rootViewController = navigationController
+    private func configureViewModel() {
+        self.viewModel.delegate = self
     }
 }
+
+extension LaunchScreenViewController: LaunchScreenViewModelDelegate {}

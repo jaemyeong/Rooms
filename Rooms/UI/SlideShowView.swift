@@ -2,6 +2,8 @@ import UIKit
 
 import OpenColorKit
 
+import ErrorKit
+
 public final class SlideShowView: UIView {
     private let scrollView: UIScrollView
     
@@ -67,7 +69,7 @@ public final class SlideShowView: UIView {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
 }
 

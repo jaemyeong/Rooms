@@ -3,31 +3,39 @@ import UIKit
 import ErrorKit
 
 public final class SceneDelegate: UIResponder {
-    private var internalWindow: UIWindow?
+    public var window: UIWindow?
+    
+    public weak var delegateAdaptor: SceneDelegateAdaptor?
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
-    public var window: UIWindow? {
-        get {
-            self.internalWindow
-        }
-        set {
-            self.internalWindow = newValue
-        }
-    }
-    
     public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = scene as? UIWindowScene else {
-            fatalError(String(describing: TypeCastingError()))
-        }
-        
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = LaunchScreenViewController()
-        
-        defer {
-            window.makeKeyAndVisible()
-        }
+        let (window, delegateAdaptor) = AppCoordinator.shared.connectScene(scene: scene)
         
         self.window = window
+        
+        self.delegateAdaptor = delegateAdaptor
+        
+        window.makeKeyAndVisible()
+    }
+    
+    public func sceneDidDisconnect(_ scene: UIScene) {
+        AppCoordinator.shared.disconnectScene(scene: scene)
+    }
+    
+    public func sceneDidBecomeActive(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneDidBecomeActive(scene)
+    }
+    
+    public func sceneWillResignActive(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneWillResignActive(scene)
+    }
+    
+    public func sceneWillEnterForeground(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneWillEnterForeground(scene)
+    }
+    
+    public func sceneDidEnterBackground(_ scene: UIScene) {
+        self.delegateAdaptor?.sceneDidEnterBackground(scene)
     }
 }

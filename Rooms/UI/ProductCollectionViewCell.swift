@@ -6,6 +6,8 @@ import Pretendard
 
 import SlideShowView
 
+import ErrorKit
+
 public final class ProductCollectionViewCell: UICollectionViewCell {
     public let textLabel: UILabel
     
@@ -32,7 +34,7 @@ public final class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     public required init?(coder: NSCoder) {
-        fatalError()
+        fatalError(String(describing: InstantiateError()))
     }
     
     public override func prepareForReuse() {
